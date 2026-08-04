@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《人类简史》薄书 · 加厚版</title>
+<style>
+:root{--paper:#F5F1E8;--card:#fff;--ink:#21252B;--ink2:#6A6F78;--ink3:#9A958A;--navy:#1E3A5F;--navy-soft:#E8EEF5;--gold:#B98A2F;--gold2:#D9B45C;--gold-soft:#F3E9D3;--teal:#0F6E56;--teal-soft:#E3F1EC;--red:#A32D2D;--red-soft:#F9E9E9;--green:#3B6D11;--green-soft:#F0F5E7;--line:#E7E0D2;--line2:#D8D0BF;--serif:"Songti SC","STSong","SimSun",Georgia,serif;--sans:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--mono:Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.75;padding-bottom:60px}
+#pbar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;z-index:99}
+.top{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:9px 14px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:7px}
+.brand .mk{width:25px;height:25px;border-radius:7px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:12px}
+.mode{display:flex;gap:3px;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:2px}
+.mode button{border:none;background:transparent;padding:4px 12px;font-size:11.5px;font-weight:600;color:var(--ink2);border-radius:99px;cursor:pointer;font-family:var(--sans)}
+.mode button.on{background:var(--navy);color:#fff}
+.tabs{display:flex;gap:4px;flex:1;justify-content:flex-end;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink2);padding:5px 12px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.tab:hover{border-color:var(--gold);color:var(--gold)}
+.tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+.panel{display:none;margin-top:14px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin-bottom:12px;box-shadow:0 1px 2px rgba(33,37,43,.04)}
+.h{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.h .no{width:24px;height:24px;border-radius:7px;background:var(--navy);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hint{font-size:11.5px;color:var(--ink3);margin:-4px 0 10px}
+.core{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:10px;padding:20px 24px;text-align:center}
+.core .lb{font-size:10.5px;letter-spacing:3px;color:var(--gold);font-weight:700}
+.core p{font-family:var(--serif);font-size:16.5px;font-weight:700;color:var(--navy);margin-top:7px;line-height:1.7}
+.ess{display:flex;gap:11px;align-items:flex-start;padding:12px 15px;border:1px solid var(--line);border-radius:9px;margin-bottom:8px;background:var(--paper)}
+.ess .en{flex-shrink:0;width:23px;height:23px;border-radius:50%;background:var(--gold);color:#fff;font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.ess .et{font-size:13px;color:var(--ink)}
+.ess .et b{color:var(--navy)}
+.cf{display:inline-block;font-size:9.5px;font-weight:700;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:1px;letter-spacing:.5px}
+.cfC{background:var(--gold-soft);color:var(--gold)}
+.cfD{background:var(--paper);color:var(--ink3);border:1px solid var(--line2)}
+/* 论点卡：判断/论证/论据 */
+.thes{border:1px solid var(--line);border-radius:10px;margin-bottom:9px;background:var(--card);overflow:hidden}
+.thes summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;align-items:center;gap:10px}
+.thes summary::-webkit-details-marker{display:none}
+.thes[open]{border-color:var(--gold2)}
+.thes .tn{width:25px;height:25px;border-radius:7px;background:var(--gold);color:#fff;font-size:11.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.thes .ar{margin-left:auto;color:var(--gold);font-size:11px;transition:transform .2s}
+.thes[open] .ar{transform:rotate(90deg)}
+.thes .bd{padding:4px 16px 14px 51px;border-top:1px dashed var(--line);font-size:13px}
+.thes .bd .j{font-weight:700;color:var(--navy);margin:9px 0 4px}
+.thes .bd .ln{font-size:11px;font-weight:700;color:var(--teal);margin-top:8px}
+.thes .bd .dt{font-size:12.5px;color:var(--ink2);line-height:1.7}
+.ptheme{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:2px;color:var(--navy);background:var(--navy-soft);border-radius:99px;padding:3px 12px;margin:10px 0 9px}
+/* 七基因（字号加大） */
+.gene{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:9px;margin-bottom:8px}
+.gn{border:1px solid var(--line);border-radius:11px;padding:14px 15px;background:var(--card)}
+.gn .gt{font-size:14px;font-weight:700;color:var(--navy)}
+.gn .gl{display:inline-block;font-size:10.5px;font-weight:700;margin:5px 0 7px;padding:2px 9px;border-radius:99px}
+.gl-main{background:var(--gold-soft);color:var(--gold)}
+.gl-mid{background:var(--navy-soft);color:var(--navy)}
+.gl-weak{background:var(--paper);color:var(--ink3);border:1px solid var(--line2)}
+.gn .gd{font-size:12.5px;color:var(--ink2);line-height:1.65}
+.depth{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:9px;background:var(--card)}
+.depth .dh{font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.depth .dd{font-size:12.5px;color:var(--ink2);line-height:1.7}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.two{grid-template-columns:1fr}}
+.pro{border:1px solid #CBDCA6;border-radius:10px;padding:14px 16px;background:var(--green-soft)}
+.pro h4{font-size:13px;color:var(--green);margin-bottom:7px}
+.con{border:1px solid #EDC9C9;border-radius:10px;padding:14px 16px;background:var(--red-soft)}
+.con h4{font-size:13px;color:var(--red);margin-bottom:7px}
+.pro li,.con li{font-size:12.5px;margin-left:16px;margin-bottom:5px;color:#3a3e45}
+.verdict{margin-top:11px;font-size:13px;background:var(--navy-soft);border-radius:8px;padding:12px 15px}
+.verdict b{color:var(--navy)}
+details.term{border:1px solid var(--line);border-radius:8px;margin-bottom:7px;background:var(--card)}
+details.term summary{list-style:none;cursor:pointer;padding:9px 13px;font-size:12.5px;font-weight:600}
+details.term summary::-webkit-details-marker{display:none}
+details.term summary::before{content:"＋";color:var(--gold);margin-right:7px}
+details.term[open] summary::before{content:"－"}
+details.term .tdef{padding:0 13px 10px 27px;font-size:12px;color:var(--ink2);border-top:1px dashed var(--line);line-height:1.7}
+ol.actions{list-style:none;counter-reset:a}
+ol.actions li{counter-increment:a;position:relative;padding:11px 14px 11px 44px;background:var(--paper);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;font-size:13px}
+ol.actions li::before{content:counter(a);position:absolute;left:11px;top:16px;width:21px;height:21px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;font-family:var(--serif)}
+ol.actions li b{color:var(--navy)}
+ol.actions li .how{display:block;color:var(--ink);font-size:12.5px;margin-top:2px}
+ol.actions li .ex{display:block;color:var(--ink2);font-size:12px;margin-top:2px}
+ol.actions li .ex::before{content:"例：";color:var(--gold);font-weight:700}
+footer{text-align:center;font-size:11.5px;color:var(--ink3);margin-top:16px;font-family:var(--serif)}
+#backtop{position:fixed;right:20px;bottom:20px;width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;border:none;font-size:16px;cursor:pointer;box-shadow:0 4px 14px rgba(33,37,43,.15);opacity:0;pointer-events:none;transition:all .25s;z-index:80}
+#backtop.show{opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+<div class="top">
+  <div class="top-in">
+    <div class="brand"><span class="mk">薄</span>人类简史 · 薄书</div>
+    <div class="mode">
+      <button class="on" onclick="md(0)">速读 15′</button>
+      <button onclick="md(1)">精读 1h</button>
+      <button onclick="md(2)">深度</button>
+    </div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+</div>
+<div class="wrap" id="panels"></div>
+<footer>薄书 · 三阅读模式 · 信心分级 A-D · 模式 B</footer>
+<button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+var MODES=[
+  {name:"速读 15′",tabs:["七个大判断","核心概念"]},
+  {name:"精读 1h",tabs:["认知革命","农业革命","融合统一","科学革命"]},
+  {name:"深度",tabs:["七基因","误读·批判","术语·行动"]}
+];
+var curMode=0;
+function md(i){
+  curMode=i;
+  var tabs=MODES[i].tabs,th="";
+  tabs.forEach(function(t,j){th+='<button class="tab'+(j===0?' on':'')+'" id="mt'+j+'" onclick="sw('+j+')">'+t+'</button>';});
+  document.getElementById('tabs').innerHTML=th;
+  document.querySelectorAll('.mode button').forEach(function(b,k){b.classList.toggle('on',k===i);});
+  sw(0);
+}
+function sw(j){
+  var P=buildPanels(curMode);
+  document.getElementById('panels').innerHTML=P[j].html;
+  document.querySelectorAll('#tabs .tab').forEach(function(b,k){b.classList.toggle('on',k===j);});
+  if(P[j].init)P[j].init();
+  window.scrollTo({top:0});
+}
+/* ===== 数据 ===== */
+var ESS=[["讲故事的能力让智人胜出","智人是唯一能大规模灵活协作的物种——靠的不是智力，而是「能相信共同虚构的故事」（神、国家、金钱、公司都是共同想象）","C"],["想象的秩序","人类几乎所有大规模系统（宗教/政治/贸易/法律）都建立在共同虚构之上——信的人足够多，虚构就成了现实","C"],["农业革命 = 史上最大骗局","物种层面大获成功（人口暴增、小麦遍布全球），个体层面生活质量恶化（劳作更苦、饮食更单调、疾病更多）","C"],["金钱 = 信任系统","货币让「万物可换、万物可信」——一切经济协作的底层，是陌生人之间的相互信任","C"],["科学革命 = 承认无知","与「一切已为人所知」的旧世界观相反，现代科学以「承认无知 + 观察与数学」起步","C"],["资本主义 = 增长信仰","信用体系建立在「相信未来会更好」上——增长成了现代宗教，借钱不再可耻","C"],["现代人未必更幸福","物质空前丰富，但幸福研究匮乏——历史没有承诺「进步 = 幸福」；智人还可能被自己的技术超越","C"]];
+var CONCPT=[["想象的秩序 vs 真实秩序","真实秩序（重力、自然规律）vs 想象秩序（法律、货币、公司）——想象秩序只要集体相信就存在","C"],["文化 vs 生物学","生物学限定人类活动的极限，文化塑造极限之内发生的事情","C"],["共同主体间现实","只要集体相信就存在的现实（钞票、法人、国家）——人类大规模合作的基石","C"],["历史的偶然","智人崛起、文明兴衰没有必然剧本——「历史从无正义」，成功往往撞上运气","C"],["双刃剑科技","生物工程/仿生工程/无机生命——智人可能亲手制造超越自己的存在","C"]];
+var REV=[
+{rev:"认知革命",tag:"约 7 万年前 · 想象的起点",pts:[
+  ["虚构故事 → 大规模协作","智人是唯一能够大规模且灵活合作的物种","合作的钥匙不是智力或工具——尼安德特人的脑容量甚至更大。真正的钥匙是「能相信共同虚构的故事」：只要一群人相信同一个故事（神、图腾、公司），就能超越血缘小圈子，让陌生人一起协作。","考古证据：认知革命后智人从非洲扩散至全球，而其他人种相继消失；今天几十亿人的协作，底层依然是共同相信的故事。","C"],
+  ["智人灭绝了其他人种","智人扩张 = 其他人属物种与大型动物的灭绝潮","智人每到一处，当地的巨兽与其他人种就消失——赫拉利称之为「人类洪水」。这不是屠杀，而是生态竞争：更会协作的物种胜出。","尼安德特人、佛罗勒斯人等相继灭绝；澳洲、美洲的大型动物在智人抵达后迅速消失。","C"],
+  ["一切大规模系统都是虚构","宗教、政治、贸易、法律——都源于共同相信的故事","国家、企业、人权、金钱……这些让成千上万人协作的东西，没有一个是生物学意义上的「真实」；它们存在，只因为足够多的人相信。","你手里的人民币没有内在价值——它的价值来自全社会共同相信；公司是「法人」，法律上是一个人，但没有任何物理实体对应它。","C"]]},
+{rev:"农业革命",tag:"约 1.2 万年前 · 史上最大骗局",pts:[
+  ["史上最大骗局","农业让物种赢、个体输","从小麦的角度看，农业革命是完美胜利：小麦从无名野草遍布全球。但从智人个体看，饮食更单调、劳作更辛苦、疾病更多、身高下降——赫拉利称之为「史上最大骗局」：我们以为驯化了小麦，其实是小麦驯化了我们。","对比：狩猎采集者每天工作 4-6 小时、饮食多样；早期农民日出而作、腰肌劳损，却只靠几种作物维生。","C"],
+  ["记忆过载 → 文字与阶层","定居生活让信息爆炸，催生文字与统治阶层","狩猎采集社会不需要复杂记录；农业定居后，粮食剩余、税收、产权都需要记录——文字由此诞生。剩余产品又催生了统治阶层：金字塔顶端的祭司、国王靠虚构秩序维持统治。","苏美尔人的泥板记录、各文明最早的文字都是账目；「盖起金字塔」——社会分层是农业革命的产物。","C"],
+  ["历史从无正义","等级、性别、阶级都是想象的产物，不是自然法则","阶级秩序之所以稳定，靠的不是暴力而是「共同想象的故事」——婆罗门高于首陀罗、男人优于女人，这些秩序被说成自然法则，其实都是人为虚构，并随历史改变。","种姓制度、父权制在不同文明中差异巨大——如果真是「自然法则」，不会如此千差万别。","C"]]},
+{rev:"融合统一",tag:"金钱 · 帝国 · 宗教",pts:[
+  ["金钱的味道","货币是最成功的虚构故事","金钱让不同文化、语言、信仰的人可以交换与信任——它不要求你相信神或国王，只要求你相信「钱本身」。「万物可换、万物可信」，金钱是人类历史上最普遍的信任系统。","贝壳、硬币、纸币、电子货币——形式不断变化，「可交换的信任」从未改变。","C"],
+  ["帝国的愿景","帝国是文化融合机器","帝国靠武力扩张，但留下的是统一的制度、语言与文化——它消灭了差异，也制造了「共同家园」的感觉。赫拉利认为帝国既是压迫者也是融合者，现代世界正是帝国遗产的继承者。","罗马帝国统一地中海，汉帝国统一东亚；今日的世界通用语言、法律与货币体系都承袭帝国遗产。","C"],
+  ["宗教的法则","从泛灵论到普世宗教","泛灵论认为万物有灵，每个地方的神都不同；普世宗教（佛教、基督教、伊斯兰教）则宣称一个真理适用于全人类——它第一次让「所有人类」成为共同体，为全球融合提供精神基础。","「全人类皆兄弟姐妹」的理念只能来自普世宗教——它是人权观念的精神祖先。","C"]]},
+{rev:"科学革命",tag:"约 500 年前 · 承认无知",pts:[
+  ["发现自己的无知","现代科学的起点是承认「我们不知道」","科学革命前的主流世界观认为「一切重要的事已知」（圣经或古籍）；现代科学则公开承认无知，用观察、实验与数学持续纠错。无知 + 方法 = 进步。","伽利略的望远镜挑战教会权威；「承认无知」让欧洲人愿意出海探索，而非固守旧地图。","C"],
+  ["科学与帝国的联姻","科学提供地图，帝国提供资金与野心","欧洲的科学与帝国互相成就：科学让航海可行（经度、地图、造船），帝国为科学提供资金与样本（殖民地的动植物、人种、语言）。没有帝国，近代科学走不了那么快。","库克船长既是探险家也是殖民者；达尔文的样本来自英国帝国的全球网络。","C"],
+  ["资本主义教条","「相信未来增长，借钱投资」","资本主义的核心不是贪婪，而是「信任」：相信未来会更好，所以可以借钱投资、扩大生产——信用体系是资本主义的引擎。增长成了现代宗教：经济不增长，整个信用大厦就动摇。","「新大陆」的发现让欧洲人相信「未来有更多财富」，于是敢于贷款出海——殖民扩张也是信贷扩张。","C"],
+  ["幸福与末日","幸福研究匮乏，现代人未必更幸福；智人可能被超越","历史没有承诺幸福：物质增长 ≠ 幸福增长，而幸福研究至今薄弱。更远的问题：生物工程、仿生工程、无机生命（AI）可能让智人「成神」——或亲手制造取代自己的存在。","「智人末日」不是预言而是思想实验：当技术能重新设计生命，智人这个物种的定义将被改写。","C"]]}
+];
+var GENES=[
+["叙事","主","7 万年的宏大叙事是载体——但提取时不拆故事，只取故事支撑的大判断"],
+["历史数据","主","考古/生物学证据支撑论点（尼安德特灭绝、农业起源、帝国扩张）"],
+["论证","主","四大革命各是一个「大判断」：农业骗局论、想象秩序论、无知革命论——提取论证链"],
+["美学","中","文笔流畅、金句频出（「人类洪水」「史上最大骗局」）——可摘金句"],
+["人物","弱","无具体主角，智人群体即主角"],
+["模型","弱","无正式模型，概念框架（想象的秩序）替代模型"],
+["经验","弱","少实操经验，以思想实验与历史推演为主"]
+];
+var BLIND=[
+["常见误读 1","把它当客观历史书读","实为「借历史讲哲学」的思想书：每一章都是一个论证，不是史实罗列——史实服务于论点，读时需区分「赫拉利的判断」与「公认史实」"],
+["常见误读 2","「农业革命让人类进步」","赫拉利恰恰反着说：农业革命让物种赢、个体输——别用「进步叙事」读它，他全书都在拆「进步」这个想象"],
+["常见误读 3","「智人统治地球是必然」","赫拉利强调历史偶然：认知革命为什么发生在智人而非尼安德特人身上，没有必然答案——成功往往撞上运气"],
+["作者盲点 1","宏大叙事牺牲精确性","证据选择性强：农业骗局论被部分考古学者批评（部分地区农业初期并非更苦）；「幸福未增加」缺乏严格实证"],
+["作者盲点 2","概念的争议性","「想象的秩序」把国家/宗教/公司等量齐观，简化了不同虚构的权力结构差异（公司和国家的影响力完全不同）"],
+["作者盲点 3","技术预言是思想实验","「智人末日」是推演而非预言，生物工程/人工智能的现实轨迹未必按书中剧本走"]
+];
+var TERMS=[["认知革命","约 7 万年前智人获得「虚构故事」能力，开启大规模协作","C"],["想象的秩序","人类共同相信才存在的秩序（法律、货币、公司）","C"],["共同主体间现实","集体相信即存在的现实——人类合作的基石","C"],["农业骗局论","农业让物种成功但个体生活质量恶化","C"],["金钱信任系统","货币是让万物可换可信的虚构——信任的物化","C"],["帝国融合机器","帝国通过扩张与同化制造文化统一","C"],["承认无知","现代科学的起点：承认不知道，用观察+数学纠错","C"],["资本主义增长信仰","信用体系建立在「相信未来更好」上","C"],["共演化物种","农业中与智人互相塑造的物种（小麦、牛）","C"],["智人末日","生物/仿生/无机工程可能让智人被超越","C"]];
+var ACTS=[
+["识别「想象的秩序」","怎么做：看到法律、公司、货币时问两问——①这件事若所有人都停止相信，还会存在吗？②它正在为谁服务？","明天开会时观察「公司」这个虚构：你们能协作，不是因为公司实体存在，而是因为所有人都相信它存在——你就在一个共同故事里工作。"],
+["用「物种 vs 个体」框架审视进步","怎么做：面对任何「进步」叙事（AI 改变世界、经济高速增长），先分开算两笔账——这个物种/系统赢了多少？其中每个个体输了多少？","刷到「技术让人类更强大」的新闻时，试着问：更强大的是谁？是智人这个物种，还是少数拥有技术的人？"],
+["警惕「必然性叙事」","怎么做：读到「历史必然」「大势所趋」时，追问一句：这是事实还是讲故事的人在说服我？","「互联网必然取代一切」——赫拉利会说：历史没有必然，只是过去恰好发生了。"], 
+["理解「承认无知」","怎么做：把「我不知道」从缺陷变成方法——学习时先列出不知道什么，再去找答案，而不是先相信自己已经知道","接到陌生领域任务时，先承认「我不知道」，再列问题清单——这正是科学革命的起手式。"],
+["看货币新闻想到信任","怎么做：看到汇率、信用评级、债务新闻时，提醒自己：这些都是「信任」的价格波动，不是物本身在变","股灾时问一句：大家还相信这套故事吗？信心崩塌 = 故事没人信了 = 资产蒸发。"],
+["用「文化 vs 生物学」拆问题","怎么做：遇到社会现象（性别分工、消费主义）先分类：哪些是生物决定（身体差异），哪些是文化塑造（观念、制度）？","「男人就该赚钱养家」——生物上不成立，这是文化故事，而文化故事是可以被改写的。"],
+["对宏大叙事保持清醒","怎么做：对任何声称「天经地义」的东西（主义、品牌、传统）问一句：这故事谁在讲？讲了多少年？信的人有多少？","双十一的「购物狂欢」也是一种共同想象——你和几亿人同时相信「今天不买就亏」，然后它就成了真的。"],
+["讨论 AI/基因工程时想双刃剑","怎么做：谈技术前景时，永远补一句「它也可能反噬」——技术没有善恶，它放大使用者的意图","讨论 AI 时想想赫拉利的提醒：智人可能不是终点，而是过渡物种——技术会改写「人」的定义。"],
+["反思幸福定义","怎么做：把「幸福」从口号变成可检验的指标——你的幸福由什么构成？收入、关系、意义各占多少？现状如何？","赫拉利说幸福研究匮乏——那你自己给幸福做一次「审计」：涨薪 30% 和每周多陪家人 5 小时，哪个更能提升你的幸福感？"],
+["把历史当论证读","怎么做：读任何历史/社科书时，每章问三问：作者要论证什么大判断？证据够不够？有没有反例？","读《人类简史》本身时也适用：农业骗局论有没有反例？——有，部分考古学家指出早期农业并非普遍更苦。保持证据意识。"]];
+function cf(lv){return '<span class="cf cf'+lv+'">'+lv+' 级</span>';}
+function buildPanels(m){
+  var list=[];
+  function push(title,html,init){list.push({title:title,html:html,init:init});}
+  if(m===0){
+    var esh='';ESS.forEach(function(e,i){esh+='<div class="ess"><span class="en">'+(i+1)+'</span><div class="et"><b>'+e[0]+'</b>——'+e[1]+cf(e[2])+'</div></div>';});
+    var ch='';CONCPT.forEach(function(e,i){ch+='<div class="ess"><span class="en">'+(i+1)+'</span><div class="et"><b>'+e[0]+'</b>——'+e[1]+cf(e[2])+'</div></div>';});
+    push('七个大判断','<div class="card"><div class="core"><div class="lb">CORE THESIS · 一句话核心</div><p>智人凭什么统治地球？答案是<b>讲故事</b>——我们是一切共同虚构（国家、金钱、宗教、公司）的信徒，而历史就是这些故事不断重写的史诗。</p></div></div><div class="card"><div class="h"><span class="no">1</span>七个大判断<span class="hint" style="margin-left:auto">全书论点浓缩 · 每条 1 分钟</span></div>'+esh+'</div>');
+    push('核心概念','<div class="card"><div class="h"><span class="no">2</span>核心概念<span class="hint" style="margin-left:auto">读懂本书的钥匙</span></div>'+ch+'</div>');
+  } else if(m===1){
+    var rn=["认知革命","农业革命","融合统一","科学革命"];
+    rn.forEach(function(nm,si){
+      var rv=REV[si],hh='';
+      rv.pts.forEach(function(p,i){
+        hh+='<details class="thes"><summary><span class="tn">'+(i+1)+'</span>'+p[0]+cf(p[4])+'<span class="ar">›</span></summary><div class="bd">'+
+          '<div class="j">'+p[1]+'</div>'+
+          '<div class="ln">论证逻辑</div><div class="dt">'+p[2]+'</div>'+
+          '<div class="ln">论据</div><div class="dt">'+p[3]+'</div>'+
+          '</div></details>';
+      });
+      push(nm,'<div class="card"><div class="h"><span class="no">'+rv.rev+'</span>'+rv.rev+'<span class="hint" style="margin-left:auto">'+rv.tag+'</span></div><div class="ptheme">基因策略：叙事+历史数据+论证主 → 提取「大判断 + 论证 + 论据」而非故事线</div>'+hh+'</div>');
+    });
+  } else {
+    var gh='';GENES.forEach(function(g){gh+='<div class="gn"><div class="gt">'+g[0]+'</div><span class="gl gl-'+g[1]+'">'+g[1]+'</span><div class="gd">'+g[2]+'</div></div>';});
+    push('七基因','<div class="card"><div class="h"><span class="no">基</span>七基因分析 · 本书 DNA<span class="hint" style="margin-left:auto">叙事+历史数据+论证主</span></div><div class="gene">'+gh+'</div></div>');
+    var bh='';BLIND.forEach(function(b){bh+='<div class="depth"><div class="dh">'+b[0]+'：'+b[1]+'</div><div class="dd">'+b[2]+'</div></div>';});
+    push('误读·批判','<div class="card"><div class="h"><span class="no">信</span>信心分级说明</div><div style="font-size:12.5px;color:var(--ink2);background:var(--paper);border-radius:8px;padding:11px 15px;line-height:1.7">本书为「书名检索模式」，无原书文本：四大革命框架与核心论点为 <span class="cf cfC">C 级</span>（百科/书评/导读多源一致）；细节表述为 <span class="cf cfD">D 级</span>（综合转述）。提供 EPUB/PDF 后可升级 A/B 级锚点引用。</div></div><div class="card"><div class="h"><span class="no">误</span>常见误读与作者盲点</div>'+bh+'</div><div class="card"><div class="h"><span class="no">评</span>批判性评论</div><div class="two"><div class="pro"><h4>✓ 最值钱</h4><ul><li>把「虚构故事」这个洞见讲透了——理解一切制度的新透镜</li><li>跨学科宏大视角：生物/历史/经济/宗教一以贯之</li><li>反直觉大判断（农业骗局、幸福未必增长）逼人重新思考</li></ul></div><div class="con"><h4>✕ 打折扣</h4><ul><li>宏大叙事牺牲精确性，证据选择性强（农业骗局论有争议）</li><li>「幸福未增加」缺乏严格实证，判断偏主观</li><li>概念过度简化：把国家/宗教/公司等量齐观</li><li>技术预言是思想实验，非确定剧本</li></ul></div></div><div class="verdict"><b>一句话评价：</b>一次宏大的思想体操——当<b>思想书</b>读，它提供的框架价值极高；当<b>史学著作</b>读，请带着证据意识。</div></div>');
+    var th='';TERMS.forEach(function(t){th+='<details class="term"><summary>'+t[0]+'</summary><div class="tdef">'+t[1]+'</div></details>';});
+    var ah='';ACTS.forEach(function(a){ah+='<li><b>'+a[0]+'</b><span class="how">'+a[1]+'</span><span class="ex">'+a[2]+'</span></li>';});
+    push('术语·行动','<div class="card"><div class="h"><span class="no">词</span>术语表（10 个必懂概念）</div>'+th+'</div><div class="card"><div class="h"><span class="no">行</span>可执行清单 · 10 个思维动作</div><ol class="actions">'+ah+'</ol></div>');
+  }
+  return list;
+}
+md(0);
+window.addEventListener('scroll',function(){var h=document.documentElement,sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;document.getElementById('pbar').style.width=sc+'%';document.getElementById('backtop').classList.toggle('show',sc>12);});
+</script>
+</body>
+</html>

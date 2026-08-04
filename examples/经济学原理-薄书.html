@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《经济学原理》薄书 · 曼昆</title>
+<style>
+:root{--paper:#F5F1E8;--card:#fff;--ink:#21252B;--ink2:#6A6F78;--ink3:#9A958A;--navy:#1E3A5F;--navy-soft:#E8EEF5;--gold:#B98A2F;--gold2:#D9B45C;--gold-soft:#F3E9D3;--teal:#0F6E56;--teal-soft:#E3F1EC;--red:#A32D2D;--red-soft:#F9E9E9;--green:#3B6D11;--green-soft:#F0F5E7;--line:#E7E0D2;--line2:#D8D0BF;--serif:"Songti SC","STSong","SimSun",Georgia,serif;--sans:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--mono:Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.7;padding-bottom:60px}
+#pbar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;z-index:99}
+.top{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:9px 14px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:7px}
+.brand .mk{width:25px;height:25px;border-radius:7px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:12px}
+.mode{display:flex;gap:3px;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:2px}
+.mode button{border:none;background:transparent;padding:4px 12px;font-size:11.5px;font-weight:600;color:var(--ink2);border-radius:99px;cursor:pointer;font-family:var(--sans)}
+.mode button.on{background:var(--navy);color:#fff}
+.tabs{display:flex;gap:4px;flex:1;justify-content:flex-end;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink2);padding:5px 12px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.tab:hover{border-color:var(--gold);color:var(--gold)}
+.tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+.panel{display:none;margin-top:14px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:12px;box-shadow:0 1px 2px rgba(33,37,43,.04)}
+.h{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.h .no{width:23px;height:23px;border-radius:7px;background:var(--navy);color:#fff;font-size:11.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hint{font-size:11px;color:var(--ink3);margin:-4px 0 10px}
+.core{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:10px;padding:18px 22px;text-align:center}
+.core .lb{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:700}
+.core p{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy);margin-top:6px;line-height:1.7}
+.ess{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;border:1px solid var(--line);border-radius:9px;margin-bottom:7px;background:var(--paper)}
+.ess .en{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.ess .et{font-size:12.5px;color:var(--ink)}
+.ess .et b{color:var(--navy)}
+.cf{display:inline-block;font-size:9px;font-weight:700;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:1px;letter-spacing:.5px}
+.cfC{background:var(--gold-soft);color:var(--gold)}
+.cfD{background:var(--paper);color:var(--ink3);border:1px solid var(--line2)}
+/* 模型卡 */
+.mdl{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--card);overflow:hidden}
+.mdl summary{list-style:none;cursor:pointer;padding:11px 15px;display:flex;align-items:center;gap:9px}
+.mdl summary::-webkit-details-marker{display:none}
+.mdl[open]{border-color:var(--gold2)}
+.mdl .mn{width:24px;height:24px;border-radius:7px;background:var(--teal);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.mdl .ar{margin-left:auto;color:var(--gold);font-size:11px;transition:transform .2s}
+.mdl[open] .ar{transform:rotate(90deg)}
+.mdl .bd{padding:3px 15px 12px 48px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink2)}
+.mdl .bd .mech{color:var(--ink);margin-top:5px}
+.mdl .bd b{color:var(--navy)}
+.mdl .bd .tag{display:inline-block;font-size:9.5px;font-weight:700;color:var(--teal);background:var(--teal-soft);border-radius:4px;padding:1px 7px;margin-right:6px}
+.ptheme{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--navy);background:var(--navy-soft);border-radius:99px;padding:2px 11px;margin:10px 0 8px}
+.gene{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:8px}
+.gn{border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:var(--card)}
+.gn .gt{font-size:12.5px;font-weight:700;color:var(--navy)}
+.gn .gl{display:inline-block;font-size:9.5px;font-weight:700;margin:4px 0 6px;padding:1px 8px;border-radius:99px}
+.gl-main{background:var(--gold-soft);color:var(--gold)}
+.gl-mid{background:var(--navy-soft);color:var(--navy)}
+.gl-weak{background:var(--paper);color:var(--ink3);border:1px solid var(--line2)}
+.gn .gd{font-size:11px;color:var(--ink2);line-height:1.5}
+.depth{border:1px solid var(--line);border-radius:10px;padding:13px 15px;margin-bottom:8px;background:var(--card)}
+.depth .dh{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.depth .dd{font-size:12px;color:var(--ink2)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.two{grid-template-columns:1fr}}
+.pro{border:1px solid #CBDCA6;border-radius:10px;padding:12px 14px;background:var(--green-soft)}
+.pro h4{font-size:12.5px;color:var(--green);margin-bottom:6px}
+.con{border:1px solid #EDC9C9;border-radius:10px;padding:12px 14px;background:var(--red-soft)}
+.con h4{font-size:12.5px;color:var(--red);margin-bottom:6px}
+.pro li,.con li{font-size:11.5px;margin-left:15px;margin-bottom:4px;color:#3a3e45}
+.verdict{margin-top:10px;font-size:12.5px;background:var(--navy-soft);border-radius:8px;padding:10px 14px}
+.verdict b{color:var(--navy)}
+details.term{border:1px solid var(--line);border-radius:8px;margin-bottom:6px;background:var(--card)}
+details.term summary{list-style:none;cursor:pointer;padding:8px 12px;font-size:12px;font-weight:600}
+details.term summary::-webkit-details-marker{display:none}
+details.term summary::before{content:"＋";color:var(--gold);margin-right:6px}
+details.term[open] summary::before{content:"－"}
+details.term .tdef{padding:0 12px 9px 26px;font-size:11.5px;color:var(--ink2);border-top:1px dashed var(--line)}
+ol.actions{list-style:none;counter-reset:a}
+ol.actions li{counter-increment:a;position:relative;padding:7px 11px 7px 40px;background:var(--paper);border:1px solid var(--line);border-radius:8px;margin-bottom:6px;font-size:12px}
+ol.actions li::before{content:counter(a);position:absolute;left:10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:var(--serif)}
+ol.actions li b{color:var(--navy)}
+footer{text-align:center;font-size:11px;color:var(--ink3);margin-top:16px;font-family:var(--serif)}
+#backtop{position:fixed;right:20px;bottom:20px;width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;border:none;font-size:16px;cursor:pointer;box-shadow:0 4px 14px rgba(33,37,43,.15);opacity:0;pointer-events:none;transition:all .25s;z-index:80}
+#backtop.show{opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+<div class="top">
+  <div class="top-in">
+    <div class="brand"><span class="mk">薄</span>经济学原理 · 薄书</div>
+    <div class="mode">
+      <button class="on" onclick="md(0)">速读 15′</button>
+      <button onclick="md(1)">精读 1h</button>
+      <button onclick="md(2)">深度</button>
+    </div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+</div>
+<div class="wrap" id="panels"></div>
+<footer>薄书 · 三阅读模式 · 信心分级 A-D · 模式 B</footer>
+<button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+var MODES=[
+  {name:"速读 15′",tabs:["十大原理","经济学思维"]},
+  {name:"精读 1h",tabs:["微观模型","宏观模型"]},
+  {name:"深度",tabs:["七基因","误读·批判","术语·行动"]}
+];
+var curMode=0;
+function md(i){
+  curMode=i;
+  var tabs=MODES[i].tabs,th="";
+  tabs.forEach(function(t,j){th+='<button class="tab'+(j===0?' on':'')+'" id="mt'+j+'" onclick="sw('+j+')">'+t+'</button>';});
+  document.getElementById('tabs').innerHTML=th;
+  document.querySelectorAll('.mode button').forEach(function(b,k){b.classList.toggle('on',k===i);});
+  sw(0);
+}
+function sw(j){
+  var P=buildPanels(curMode);
+  document.getElementById('panels').innerHTML=P[j].html;
+  document.querySelectorAll('#tabs .tab').forEach(function(b,k){b.classList.toggle('on',k===j);});
+  if(P[j].init)P[j].init();
+  window.scrollTo({top:0});
+}
+/* ===== 数据 ===== */
+var PRIN=[["人们面临权衡取舍","选择即放弃——资源稀缺是一切经济学问题的起点","C"],["机会成本","某种东西的成本，是为了得到它所放弃的东西","C"],["理性人考虑边际量","做决策比较边际收益与边际成本，而非总量","C"],["人们会对激励作出反应","激励是分析一切政策后果的钥匙","C"],["贸易能使每个人更好","专业化 + 交换 = 双赢（比较优势）","C"],["市场通常是好方法","价格机制像「看不见的手」配置资源","C"],["政府有时可改善市场结果","市场失灵（外部性/公共品）时政府介入","C"],["生活水平取决于生产率","长期繁荣靠生产物品与服务的能力","C"],["货币超发导致物价上升","通胀归根到底是货币现象","C"],["通胀与失业短期权衡","菲利普斯曲线：短期两者此消彼长","C"]];
+var THINK=[["像经济学家一样思考","实证（是什么）与规范（应该怎样）分离；模型是简化工具","C"],["循环流量图","家庭与企业通过产品/要素市场双向流动","C"],["生产可能性边界","显示权衡取舍与机会成本的核心图形","C"],["相关≠因果","经济学的第一方法论戒律","C"],["微观 vs 宏观","个体决策 vs 总量现象，视角不同但工具相通","C"],["贸易的好处","比较优势：各自专注机会成本最低的生产","C"]];
+var MICRO=[
+["供需模型","市场如何运行","需求曲线向下、供给向上，均衡价格使市场出清；价格是配置资源的信号。","第4章 · 案例：油价、房租管制"],
+["弹性","反应程度","需求/供给对价格变化的敏感度；弹性决定税收归宿与厂商定价能力。","第5章"],
+["市场效率","看不见的手","消费者剩余 + 生产者剩余 = 总剩余；完全竞争下市场使总剩余最大化。","第7章"],
+["税收的代价","无谓损失","税收扭曲激励，造成超过税收本身的社会损失——「税收除了拿走钱，还制造浪费」。","第8章"],
+["外部性","市场失灵①","污染等成本/收益外溢，价格失真；对策：庇古税、可交易许可证、科斯谈判。","第10章"],
+["公共物品","市场失灵②","非排他 + 非竞争 → 搭便车 → 私人不愿提供；需政府提供（国防、灯塔）。","第11章"],
+["市场结构","竞争 vs 垄断","完全竞争（价格接受）→ 垄断（定价权 + 无谓损失）；反垄断为何存在。","第15-17章"],
+["收入分配","生产要素市场","工资 = 劳动的边际产量价值；歧视与收入不平等是要素市场的结果。","第19-21章"]
+];
+var MACRO=[
+["GDP 衡量","一国收入的尺度","GDP = 消费+投资+政府购买+净出口；GDP 不等于幸福。","第23章"],
+["增长与生产率","长期繁荣之源","人均产出取决于生产率：资本、教育、技术、制度——「生活水平=生产率」的展开。","第25章"],
+["货币与通胀","物价的根源","货币数量论：MV=PY；货币超发是持续通胀的唯一根源。","第29-30章"],
+["总需求与总供给","短期波动","AD-AS 模型解释衰退与扩张；短期价格粘性使需求冲击影响产出。","第33章"],
+["财政与货币政策","需求管理","乘数效应、挤出效应；央行用利率与货币供给调节总需求。","第34章"],
+["菲利普斯曲线","通胀-失业权衡","短期此消彼长，长期垂直（自然失业率）——央行「预期管理」的根据。","第35章"]
+];
+var GENES=[
+["模型","主","全书是模型库：供需/弹性/剩余/AD-AS/菲利普斯……提取每个模型：假设→机制→结论→边界"],
+["论证","主","经济学家的推理方式：边际思维、机会成本思维、实证/规范分离"],
+["历史数据","中","GDP、通胀、失业等数据作为模型论据（新闻摘录/案例研究专栏）"],
+["经验","中","现实案例（税收、管制、金融危机）检验模型适用性"],
+["叙事","辅","故事化开头服务教学，非独立价值"],
+["人物","弱","少数经济学家轶事，不作提取重点"],
+["美学","弱","语言追求「简单明了」，无修辞资产"]
+];
+var BLIND=[
+["常见误读 1","以为经济学教你赚钱/自私","实际教你「像经济学家一样思考」——分析框架，不是致富经；理性人假设是工具不是价值观"],
+["常见误读 2","模型脱离现实、无用","模型是「简化地图」：抓主要矛盾、帮助思考；曼昆特意强调应用与政策而非纯模型"],
+["常见误读 3","相关性就是因果","经济学第一戒律：观察到的相关未必因果，警惕倒果为因（冰淇淋销量与溺水）"],
+["作者盲点 1","立场偏主流新古典","对行为经济学、制度经济学、异端思想着墨有限；「市场亲善」倾向在政策讨论中可见"],
+["作者盲点 2","理性人假设的边界","现实中人们常非理性（损失厌恶、沉没成本谬误）——原理一至四描述「理性人」，需知道何时不适用"],
+["作者盲点 3","忽视制度与历史","教科书强调普适模型，对各国制度差异、历史路径的讨论弱于发展经济学"]
+];
+var TERMS=[["机会成本","做选择放弃的最高价值替代——经济学第一思维","C"],["边际量","多做一个单位的增量收益/成本","C"],["弹性","需求量/供给量对价格的反应程度","C"],["比较优势","相对机会成本更低的一方应专业化","C"],["无谓损失","税收/垄断造成的超出转移的社会损失","C"],["外部性","行为对第三方的成本/收益外溢","C"],["GDP","一国一年内最终产品与服务的市场价值","C"],["菲利普斯曲线","通胀与失业的短期负相关","C"],["货币中性","长期货币量不影响真实产出","C"],["乘数效应","初始支出变动引发多轮连锁反应","C"]];
+var ACTS=[["做选择先问机会成本","「我放弃的是什么」——买房/跳槽/时间分配都适用。"],["用边际思维判断","「多做一个单位值不值」，而不是「总量好不好」。"],["分析政策先看激励","任何政策都会改变激励——激励一变，行为就变。"],["看到相关性先怀疑因果","别急着下结论，找第三个变量。"],["判断通胀看货币","长期通胀是货币现象，别被单一商品涨价带偏。"],["用供需看价格","价格上涨先问：需求变了还是供给变了？"],["识别市场失灵","外部性、公共品、垄断——政府介入的正当理由。"],["理解 GDP 的局限","GDP 增长 ≠ 幸福增长，但仍是衡量生活水平的第一指标。"],["短期看需求、长期看供给","宏观争论的钥匙：时间维度决定答案。"],["警惕沉没成本","已经花掉的不是成本，未来收益才是——别为「回本」继续投入。"]];
+
+function cf(lv){return '<span class="cf cf'+lv+'">'+lv+' 级</span>';}
+function buildPanels(m){
+  var list=[];
+  function push(title,html,init){list.push({title:title,html:html,init:init});}
+  if(m===0){
+    var esh='';PRIN.forEach(function(e,i){esh+='<div class="ess"><span class="en">'+(i+1)+'</span><div class="et"><b>'+e[0]+'</b>——'+e[1]+cf(e[2])+'</div></div>';});
+    var th='';THINK.forEach(function(e,i){th+='<div class="ess"><span class="en">'+(i+1)+'</span><div class="et"><b>'+e[0]+'</b>——'+e[1]+cf(e[2])+'</div></div>';});
+    push('十大原理','<div class="card"><div class="core"><div class="lb">CORE THESIS · 一句话核心</div><p>经济学不是一堆公式，而是一种思维方式——<b>权衡取舍、机会成本、边际与激励</b>；曼昆把这种思维浓缩成十大原理，全书都是它们的展开。</p></div></div><div class="card"><div class="h"><span class="no">1</span>十大原理（第 1 章 · 全书中枢）<span class="hint" style="margin-left:auto">每条 1 分钟</span></div>'+esh+'</div>');
+    push('经济学思维','<div class="card"><div class="h"><span class="no">2</span>经济学思维工具箱<span class="hint" style="margin-left:auto">第 2-3 章 · 思考方式</span></div>'+th+'</div>');
+  } else if(m===1){
+    var mh='';MICRO.forEach(function(x,i){mh+='<details class="mdl"><summary><span class="mn">'+(i+1)+'</span>'+x[0]+'<span class="ar">›</span></summary><div class="bd"><span class="tag">'+x[1]+'</span>'+x[2]+'<div class="mech"><b>出处：</b>'+x[3]+'</div></div></details>';});
+    var ah='';MACRO.forEach(function(x,i){ah+='<details class="mdl"><summary><span class="mn">'+(i+1)+'</span>'+x[0]+'<span class="ar">›</span></summary><div class="bd"><span class="tag">'+x[1]+'</span>'+x[2]+'<div class="mech"><b>出处：</b>'+x[3]+'</div></div></details>';});
+    push('微观模型','<div class="card"><div class="h"><span class="no">微</span>微观核心模型（8 个）<span class="hint" style="margin-left:auto">教科书型提取：抓模型而非章节</span></div><div class="ptheme">基因策略：模型主基因 → 每个模型给「机制一句话 + 出处」</div>'+mh+'</div>');
+    push('宏观模型','<div class="card"><div class="h"><span class="no">宏</span>宏观核心模型（6 个）<span class="hint" style="margin-left:auto">点击展开</span></div><div class="ptheme">基因策略：短期看需求（AD-AS），长期看供给（增长）</div>'+ah+'</div>');
+  } else {
+    var gh='';GENES.forEach(function(g){gh+='<div class="gn"><div class="gt">'+g[0]+'</div><span class="gl gl-'+g[1]+'">'+g[1]+'</span><div class="gd">'+g[2]+'</div></div>';});
+    push('七基因','<div class="card"><div class="h"><span class="no">基</span>七基因分析 · 本书 DNA<span class="hint" style="margin-left:auto">教科书型判定</span></div><div class="gene">'+gh+'</div></div>');
+    var bh='';BLIND.forEach(function(b){bh+='<div class="depth"><div class="dh">'+b[0]+'：'+b[1]+'</div><div class="dd">'+b[2]+'</div></div>';});
+    push('误读·批判','<div class="card"><div class="h"><span class="no">信</span>信心分级说明</div><div style="font-size:12px;color:var(--ink2);background:var(--paper);border-radius:8px;padding:10px 14px">本书为「书名检索模式」，无原书文本：十大原理/篇章结构为 <span class="cf cfC">C 级</span>（多个版本目录多源一致）；模型机制描述为 <span class="cf cfD">D 级</span>（基于领域知识的综合转述）。提供 EPUB/PDF 后可升级 A/B 级锚点引用。</div></div><div class="card"><div class="h"><span class="no">误</span>常见误读与作者盲点</div>'+bh+'</div><div class="card"><div class="h"><span class="no">评</span>批判性评论</div><div class="two"><div class="pro"><h4>✓ 最值钱</h4><ul><li>十大原理是绝佳框架：用最少概念解释最多现象</li><li>应用与政策导向，不堆模型——对初学者极友好</li><li>思维方式（机会成本/边际/激励）超越学科</li></ul></div><div class="con"><h4>✕ 打折扣</h4><ul><li>立场偏主流新古典，异端/行为视角着墨少</li><li>理性人假设的边界需读者自己警惕</li><li>对制度、历史路径的讨论弱于发展经济学</li></ul></div></div><div class="verdict"><b>一句话评价：</b>全球最成功的经济学入门教材——当<b>思维框架</b>读价值极高，当<b>完整经济学</b>读需再补发展经济学与行为经济学。</div></div>');
+    var th='';TERMS.forEach(function(t){th+='<details class="term"><summary>'+t[0]+'</summary><div class="tdef">'+t[1]+'</div></details>';});
+    var ah='';ACTS.forEach(function(a){ah+='<li><b>'+a[0]+'：</b>'+a[1]+'</li>';});
+    push('术语·行动','<div class="card"><div class="h"><span class="no">词</span>术语表（10 个必懂概念）</div>'+th+'</div><div class="card"><div class="h"><span class="no">行</span>可执行清单 · 10 个思维动作</div><ol class="actions">'+ah+'</ol></div>');
+  }
+  return list;
+}
+md(0);
+window.addEventListener('scroll',function(){var h=document.documentElement,sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;document.getElementById('pbar').style.width=sc+'%';document.getElementById('backtop').classList.toggle('show',sc>12);});
+</script>
+</body>
+</html>

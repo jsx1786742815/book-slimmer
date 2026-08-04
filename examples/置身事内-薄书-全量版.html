@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《置身事内》薄书 · 全量交互版</title>
+<style>
+:root{--paper:#F5F1E8;--card:#fff;--ink:#21252B;--ink2:#6A6F78;--ink3:#9A958A;--navy:#1E3A5F;--navy2:#2E5179;--navy-soft:#E8EEF5;--gold:#B98A2F;--gold2:#D9B45C;--gold-soft:#F3E9D3;--teal:#0F6E56;--teal-soft:#E3F1EC;--red:#A32D2D;--red-soft:#F9E9E9;--green:#3B6D11;--green-soft:#F0F5E7;--line:#E7E0D2;--line2:#D8D0BF;--serif:"Songti SC","STSong","SimSun",Georgia,serif;--sans:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--mono:Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.7;padding-bottom:70px}
+#pbar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;z-index:99}
+.top{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:9px 14px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
+.brand .mk{width:26px;height:26px;border-radius:7px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:13px}
+.tabs{display:flex;gap:4px;flex:1;justify-content:flex-end;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink2);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.tab:hover{border-color:var(--gold);color:var(--gold)}
+.tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+.panel{display:none;margin-top:16px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin-bottom:14px;box-shadow:0 1px 2px rgba(33,37,43,.04)}
+.h{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.h .no{width:24px;height:24px;border-radius:7px;background:var(--navy);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hint{font-size:11.5px;color:var(--ink3);margin:-6px 0 12px}
+.core{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:10px;padding:20px 24px;text-align:center}
+.core .lb{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:700}
+.core p{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--navy);margin-top:8px;line-height:1.7}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.di{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;position:relative;overflow:hidden}
+.di .bar{position:absolute;bottom:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.di .num{font-family:var(--serif);font-size:21px;font-weight:700;color:var(--navy)}
+.di .cap{font-size:11px;color:var(--ink2);margin-top:3px}
+.di .src{font-size:9px;color:var(--ink3);font-family:var(--mono)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:8px 11px;text-align:left;border-bottom:1px solid var(--line)}
+th{color:var(--navy);background:var(--paper);font-family:var(--serif)}
+.darkline{margin-top:12px;font-size:12px;color:var(--ink2);background:var(--paper);border-radius:8px;padding:10px 14px}
+.darkline b{color:var(--navy)}
+.dom{display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:99px;font-weight:600}
+.dom-s{background:var(--navy-soft);color:var(--navy)}
+.dom-x{background:var(--teal-soft);color:var(--teal)}
+details.ch{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--card);overflow:hidden}
+details.ch summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:10px}
+details.ch summary::-webkit-details-marker{display:none}
+details.ch[open]{border-color:var(--gold2)}
+.ch-no{width:28px;height:28px;border-radius:8px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;font-family:var(--serif);flex-shrink:0}
+.ch-title{font-family:var(--serif);font-size:13.5px;font-weight:700;color:var(--ink)}
+.ch-pos{font-size:10px;color:var(--ink3);display:block}
+.ch-arrow{margin-left:auto;color:var(--gold);transition:transform .2s}
+details.ch[open] .ch-arrow{transform:rotate(90deg)}
+.ch-body{padding:2px 16px 13px;border-top:1px solid var(--line)}
+.ch-body .row{margin-top:9px;padding-left:11px;border-left:2px solid var(--line);font-size:12.5px;color:#3a3e45}
+.k{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:1px;padding:1px 6px;border-radius:4px;margin-right:7px;vertical-align:1px}
+.k-thesis{background:var(--gold-soft);color:var(--gold)}
+.k-tool{background:var(--navy-soft);color:var(--navy)}
+.k-ev{background:var(--teal-soft);color:var(--teal)}
+.loc{font-family:var(--mono);font-size:9.5px;color:var(--ink3)}
+.txt b{color:var(--navy)}
+.part{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:3px;color:var(--gold);border-bottom:2px solid var(--gold);padding-bottom:3px;margin:12px 0 8px}
+.tl-scroll{overflow-x:auto;padding:12px 4px 8px}
+.timeline{display:flex;min-width:max-content;position:relative;padding-top:4px}
+.timeline::before{content:"";position:absolute;top:20px;left:12px;right:12px;height:2px;background:var(--line)}
+.tl-item{width:112px;flex-shrink:0;text-align:center;cursor:pointer;padding:0 3px}
+.tl-item .dot{width:12px;height:12px;border-radius:50%;background:var(--card);border:3px solid var(--navy);margin:0 auto 7px;position:relative;z-index:1;transition:all .15s}
+.tl-item.open .dot{background:var(--gold);border-color:var(--gold)}
+.tl-item .yr{font-family:var(--serif);font-size:13.5px;font-weight:700;color:var(--navy)}
+.tl-item .ev{display:block;font-size:10px;color:var(--ink2);margin-top:3px;line-height:1.4;min-height:28px}
+.tl-detail{display:none;margin-top:10px;background:var(--navy-soft);border-left:4px solid var(--navy);border-radius:8px;padding:13px 16px;font-size:12.5px}
+.tl-detail.show{display:block}
+.cc{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
+.cn{background:var(--card);border:1.5px solid var(--line2);border-radius:10px;padding:9px 13px;font-size:12px;font-weight:700;color:var(--ink);cursor:pointer;transition:all .15s}
+.cn small{display:block;font-weight:400;color:var(--ink3);font-size:10px}
+.cn:hover{border-color:var(--gold)}
+.cn.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.cn.on small{color:#B9C6D6}
+.ca{color:var(--ink3);font-weight:700}
+.cd{display:none;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px;padding:13px 16px;font-size:12.5px}
+.cd.show{display:block}
+.cd b{color:var(--navy)}
+.quote{position:relative;background:var(--card);border:1px solid var(--line);border-left:none;border-radius:0 10px 10px 0;padding:10px 15px 10px 22px;margin-bottom:8px;font-family:var(--serif);font-size:13.5px;font-weight:600;color:#33383f}
+.quote::before{content:"";position:absolute;left:0;top:0;bottom:0;width:11px;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:2px 0 0 2px}
+.quote .loc{display:block;font-family:var(--mono);font-size:9.5px;color:var(--ink3);font-weight:400}
+.figwrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:7px}
+.fig{font-size:11px;color:#3a3e45;background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:7px 11px}
+.term{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:560px){.term{grid-template-columns:1fr}}
+details.term{border:1px solid var(--line);border-radius:8px;background:var(--card)}
+details.term summary{list-style:none;cursor:pointer;padding:8px 12px;font-size:12px;font-weight:600}
+details.term summary::-webkit-details-marker{display:none}
+details.term summary::before{content:"＋";color:var(--gold);margin-right:6px}
+details.term[open] summary::before{content:"－"}
+details.term .tdef{padding:0 12px 9px 26px;font-size:11.5px;color:var(--ink2);border-top:1px dashed var(--line)}
+details.term .tdef .loc{font-family:var(--mono);font-size:9px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.two{grid-template-columns:1fr}}
+.pro{border:1px solid #CBDCA6;border-radius:10px;padding:14px 16px;background:var(--green-soft)}
+.pro h4{font-size:13px;color:var(--green);margin-bottom:6px}
+.con{border:1px solid #EDC9C9;border-radius:10px;padding:14px 16px;background:var(--red-soft)}
+.con h4{font-size:13px;color:var(--red);margin-bottom:6px}
+.pro li,.con li{font-size:12px;margin-left:16px;margin-bottom:4px;color:#3a3e45}
+.verdict{margin-top:10px;font-size:12.5px;background:var(--navy-soft);border-radius:8px;padding:10px 14px}
+.verdict b{color:var(--navy)}
+.cmp{border:1px solid var(--line);border-radius:10px;padding:13px 15px;margin-bottom:8px;background:var(--card)}
+.cmp .cn{font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy)}
+.cmp .role{display:inline-block;font-size:9.5px;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:99px;padding:1px 8px;margin:4px 0 6px}
+.cmp p{font-size:11.5px;color:var(--ink2)}
+ol.actions{list-style:none;counter-reset:a}
+ol.actions li{counter-increment:a;position:relative;padding:8px 12px 8px 44px;background:var(--paper);border:1px solid var(--line);border-radius:9px;margin-bottom:7px;font-size:12.5px}
+ol.actions li::before{content:counter(a);position:absolute;left:11px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--serif)}
+ol.actions li b{color:var(--navy)}
+.quiz{border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden;margin-bottom:9px}
+.quiz .q{padding:11px 15px 3px;font-size:13px;font-weight:600}
+.quiz .opts{padding:7px 15px 12px}
+.quiz .opt{display:block;width:100%;text-align:left;margin-bottom:5px;padding:7px 11px;border:1px solid var(--line);border-radius:7px;background:var(--paper);font-size:12px;cursor:pointer;font-family:var(--sans)}
+.quiz .opt.right{background:var(--green-soft);border-color:var(--green);color:var(--green);font-weight:600}
+.quiz .opt.wrong{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.quiz .opt:disabled{cursor:default}
+.quiz .fb{display:none;padding:0 15px 11px;font-size:11.5px;color:var(--ink2)}
+.quiz .fb.show{display:block}
+.quiz .fb b{color:var(--teal)}
+#backtop{position:fixed;right:20px;bottom:22px;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;border:none;font-size:17px;cursor:pointer;box-shadow:0 4px 14px rgba(33,37,43,.15);opacity:0;pointer-events:none;transition:all .25s;z-index:80}
+#backtop.show{opacity:1;pointer-events:auto}
+footer{text-align:center;font-size:11px;color:var(--ink3);margin-top:16px;font-family:var(--serif)}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+<div class="top">
+  <div class="top-in">
+    <div class="brand"><span class="mk">薄</span>置身事内 · 薄书</div>
+    <div class="tabs">
+      <button class="tab on" id="tb0" onclick="sw(0)">概览</button>
+      <button class="tab" id="tb1" onclick="sw(1)">章节</button>
+      <button class="tab" id="tb2" onclick="sw(2)">互动</button>
+      <button class="tab" id="tb3" onclick="sw(3)">附录</button>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <section class="panel on" id="p0">
+    <div class="card">
+      <div class="core"><div class="lb">CORE THESIS · 一句话核心</div>
+      <p>不能脱离政府谈经济——中国经济运行的主轴，是地方政府以土地为杠杆的投融资模式；看懂微观机制，才能看懂城市化、房价、债务与贸易冲突。</p></div>
+    </div>
+    <div class="card"><div class="h"><span class="no">数</span>关键数据速览</div><div class="dg" id="dg"></div></div>
+    <div class="card"><div class="h"><span class="no">图</span>全局地图</div>
+      <table>
+        <tr><th>篇章</th><th>章节</th><th>主题</th></tr>
+        <tr><td rowspan="4"><span class="dom dom-s">上篇 · 微观机制</span></td><td>第一章 地方政府的权力与事务</td><td>事权划分 · 信息 · 激励相容</td></tr>
+        <tr><td>第二章 财税与政府行为</td><td>分税制 · 土地财政 · 基层财政</td></tr>
+        <tr><td>第三章 政府投融资与债务</td><td>土地金融 · 城投 · 隐性担保</td></tr>
+        <tr><td>第四章 工业化中的政府角色</td><td>京东方 · 光伏 · 产业引导基金</td></tr>
+        <tr><td rowspan="4"><span class="dom dom-x">下篇 · 宏观现象</span></td><td>第五章 城市化与不平衡</td><td>房价 · 要素市场 · 贫富差距</td></tr>
+        <tr><td>第六章 债务与风险</td><td>债务成因 · 化解 · 产能过剩</td></tr>
+        <tr><td>第七章 国内国际失衡</td><td>低消费 · 中美冲突 · 双循环</td></tr>
+        <tr><td>第八章 总结：政府与经济发展</td><td>地区竞争 · 转型 · 发展观</td></tr>
+      </table>
+      <div class="darkline"><b>暗线：</b>一条主线（地方政府投融资）+ 两视角（微观→宏观）+ 三张力（政府vs市场 / 土地vs人 / 发展过程vs目标）。</div>
+    </div>
+  </section>
+  <section class="panel" id="p1">
+    <div class="card">
+      <div class="hint">八章完整论点 × 机制 × 论据（含补读细节）· 点击展开 · 互斥</div>
+      <span class="part">上篇 · 微观机制</span><div id="chapters"></div>
+      <span class="part">下篇 · 宏观现象</span><div id="chapters2"></div>
+    </div>
+  </section>
+  <section class="panel" id="p2">
+    <div class="card"><div class="h"><span class="no">时</span>制度时间轴（15 节点）<span class="hint" style="margin-left:auto">点击节点看事件详情</span></div>
+      <div class="tl-scroll"><div class="timeline" id="tl"></div></div>
+      <div class="tl-detail" id="tlD"></div></div>
+    <div class="card"><div class="h"><span class="no">因</span>因果链 · 点击环节看因果</div>
+      <div class="cc" id="cc"></div><div class="cd" id="cd"></div></div>
+    <div class="card"><div class="h"><span class="no">测</span>读者自测 · 5 题点击判分</div><div id="quiz"></div></div>
+  </section>
+  <section class="panel" id="p3">
+    <div class="card"><div class="h"><span class="no">句</span>金句摘录（9 条原文 + 锚点）</div><div id="quotes"></div></div>
+    <div class="card"><div class="h"><span class="no">图</span>全书图表速览（21 张）</div><div class="figwrap" id="figs"></div></div>
+    <div class="card"><div class="h"><span class="no">评</span>批判性评论</div>
+      <div class="two">
+        <div class="pro"><h4>✓ 最值钱的地方</h4><ul>
+          <li><b>解释力强、自洽度高</b>：用「地方政府投融资」一条主线，把土地财政、城投、债务、房价、贫富差距、贸易冲突串成一根因果链。</li>
+          <li><b>案例鲜活本土</b>：成都宽窄巷子、京东方、无锡尚德、上海情侣——每个抽象机制都有具体故事落地。</li>
+          <li><b>数据扎实、立场克制</b>：引用 260 余种文献（多为 2010 后研究），不回避问题也不全盘否定，描述先于价值判断。</li>
+          <li>是「学院派—大众」桥梁书：复旦课程讲义打磨，学术严谨性与可读性平衡得极好。</li>
+        </ul></div>
+        <div class="con"><h4>✕ 必须打折扣的地方</h4><ul>
+          <li><b>时效边界</b>：数据主要截至 2018—2019，未覆盖 2021 后地产出清、一揽子化债、三大工程。</li>
+          <li><b>批评偏温和</b>：对政府主导模式的反思点到为止；土地财政替代方案（房产税、地方税体系）着墨少。</li>
+          <li><b>有阅读门槛</b>：默认读者有基本经济学常识，技术细节被刻意剔除。</li>
+          <li><b>原创性有限</b>：地区竞争、财政联邦主义等理论是既有学术成果的通俗化整合。</li>
+        </ul></div>
+      </div>
+      <div class="verdict"><b>一句话评价：</b>理解当代中国经济的最佳入门书之一。<b>先读上篇建立机制框架，再读下篇看宏观后果</b>；当「分析工具书」用，价值最高。</div>
+    </div>
+    <div class="card"><div class="h"><span class="no">比</span>同类书对比</div>
+      <div class="cmp"><div class="cn">周黎安《转型中的地方政府》</div><span class="role">理论源头 · 学术版</span><p>「官场+市场」与「地区竞争」的学理出处是周黎安的「晋升锦标赛/行政发包制」。想深究机制证据就读这本。</p></div>
+      <div class="cmp"><div class="cn">陆铭《大国大城》</div><span class="role">观点对立 · 药方版</span><p>主张人口自由流动、向大城市集聚（「在集聚中走向平衡」），是开药方；兰小欢重在解释现状。对照读见「解释 vs 对策」的分野。</p></div>
+      <div class="cmp"><div class="cn">林毅夫「新结构经济学」</div><span class="role">立场相近 · 辩护版</span><p>为政府主导产业政策提供理论辩护；本书更平衡，既承认成就也详述隐忧。</p></div>
+    </div>
+    <div class="card"><div class="h"><span class="no">词</span>术语表（12 条，点击展开）</div><div class="term" id="terms"></div></div>
+    <div class="card"><div class="h"><span class="no">行</span>可执行清单 · 10 个分析动作</div><ol class="actions" id="acts"></ol></div>
+  </section>
+  <footer>薄书 · 全量交互版 · EPUB 全文解析（60 章 / 1406 段）· 锚点可回查原文</footer>
+</div>
+<button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+function sw(i){for(var j=0;j<4;j++){document.getElementById('p'+j).classList.toggle('on',j===i);document.getElementById('tb'+j).classList.toggle('on',j===i);}window.scrollTo({top:0});}
+var CARDS=[["258%","2018 债务/GDP（与美国持平）","part0040#p4",100],["154%","企业债务/GDP","part0043",60],["28%","2019 制造业占全球","part0047#p3",11],["44%","城镇户籍人口占比","part0034#p4",44],["5 亿","40 年进城人口","part0034#p4",95],["40%","增值税占全国税入","part0055#p7",40],["65→50%","总消费占 GDP","part0048#p1",77],["70→60%","居民可支配收入占 GDP","part0048#p5",86]];
+(function(){var h="";CARDS.forEach(function(c){h+='<div class="di"><div class="num">'+c[0]+'</div><div class="cap">'+c[1]+'</div><div class="src">'+c[2]+'</div><div class="bar" style="width:'+c[3]+'%"></div></div>';});document.getElementById('dg').innerHTML=h;})();
+var CHS=[
+{n:"1",t:"地方政府的权力与事务",p:"事权划分 · 激励相容",rows:[["论点","政府不止提供公共服务，也<b>深度参与生产和分配</b>；不能脱离政府谈经济，是理解中国经济的基本出发点。","part0013#p2"],["机制","<b>事权划分三理论</b>：公共服务的规模经济与边界 / 信息复杂性 / 激励相容；权力受两种约束——做事的能力（资源）与意愿（激励）。","part0013#p1#p12"],["论据","<b>激励相容细节</b>：海关等专业部门垂直管理；工商（1999）与环保（2016）双重领导的上收纠偏；发展经济等宏观任务放权给地方，<b>属地管理</b>——谁主管谁负责。","part0011#p3#p6#p9"]]},
+{n:"2",t:"财税与政府行为",p:"分税制 · 土地财政",rows:[["论点","<b>财政从来不是纯粹的经济问题</b>——办事要花钱，把握政府真实意图要看资金流向和数量。","part0015#p2"],["机制","财政包干（1985—93「两个比重」下降，中央占比 22%）→ <b>1994 分税制</b>（财权上收至 55%）→ 重企业轻民生（九成税收征自企业、增值税在生产环节征收）→ <b>土地财政</b>（1998 房改+土管法修订；2004 招拍挂；年五六万亿土地转让费）。","part0016#p6#p10#p4"],["论据","<b>基层财政困境</b>：「财权层层上收、事权层层下压」；东部靠土地「吃饭+办事」，中西部县乡困难；对策：农村税费改革（2000）、义务教育经费保障（中央 3300 亿/1.3 亿学生）、「三奖一补」（2005）、「乡财县管」（2003）、「省直管县」（浙江）。","part0018#p2#p3#p8"]]},
+{n:"3",t:"政府投融资与债务",p:"土地金融 · 城投",rows:[["论点","<b>「土地本身并不值钱，值钱的是土地之上的经济活动」</b>；土地不会移动消失、天然适合做抵押，把土地未来收入资本化融资，将「土地财政」放大为「土地金融」（图3-1）。","part0021#p3#p4"],["机制","地方政府不能贷款、2015 前不能发债 → 成立<b>城投/融资平台</b>（国有独资）→ 三大信用支柱：持有土地资产 + 盈利依赖政府补贴 + 政府<b>隐性担保</b>（《担保法》禁止担保，但市场默认）。","part0022#p3#p9"],["论据","成都宽窄巷子：成都文旅注册资本 5 亿→31 亿、资产 204 亿、授信 176 亿、AA+ 评级，净利润依赖补贴；债务根源不在收入少而在<b>支出多</b>（承担发展任务、角色太多）；算账要算两边——负债 + 借债形成的资产。","part0022#p6#p25"]]},
+{n:"4",t:"工业化中的政府角色",p:"产业政策 · 案例",rows:[["论点","现实没有黑白分明的「市场/政府」分界；中国脱胎于计划经济，政府掌握土地、金融、国企等资源，<b>必然深度介入实业投资</b>；讨论产业政策不能脱离具体行业（钢铁是一回事，芯片是另一回事）。","part0027#p2#p3"],["机制","政府投资 + 城投定增 + 国开行银团贷款支持具体企业；<b>产业引导基金</b>：美式风投嫁接地方财政，政府做 <b>LP</b> 把钱交给市场化私募基金的 <b>GP</b>（有限合伙制），一支基金政府+社会资本混合，杠杆放大财政资金。","part0028#p7#p10"],["论据","<b>京东方</b>：2008 成都 4.5 代线 = 城投定增 18 亿 + 国开行银团 16 亿（共 34 亿）；面板成本占电视近八成、2012 进口面板 500 亿美元（仅次于芯片/石油/铁矿石）、2020 大陆占全球近四成；27 寸显示器 7599 → 949 元。<b>光伏</b>：美国卡特补贴→里根废止→德日接力（FiT）；无锡尚德由政府平台出资 75% 当「天使投资人」；2012 倒闭潮被当政策失败「活靶子」，但洗牌后隆基收益几十倍。","part0028#p1#p7#p3"]]},
+{n:"5",t:"城市化与不平衡",p:"房价 · 要素市场",rows:[["论点","以土地为中心的城市化忽视了城市化的核心——<b>人</b>；<b>「土地的资本化，实质是个人收入的资本化」</b>——支撑房价地价的是人的收入，忽略人，城市化就入歧途。","part0034#p3"],["机制","土地国有制 → 政府垄断土地一级市场 → 土地成为启动城市化的资本；特征：<b>土地的城市化快于人的城市化</b>；失衡根源之一在要素流动受限（土地流转、户籍改革是解药）。","part0034#p2#p1"],["论据","1980 城镇常住 <20% → 2019 超 60%（40 年 5 亿人进城）；户籍仅 44%——2 亿多人常住无户口；城市化三阶段（94 前乡镇企业离土不离乡 / 94 后农民工进城 / 大规模城市化+债务累积）。","part0034#p4#p1"]]},
+{n:"6",t:"债务与风险",p:"成因 · 化解",rows:[["论点","债务问题不是简单的货币金融问题，<b>根源在经济发展模式和结构</b>；「人们在乐观时往往会低估负债的风险，过多借债」。","part0040#p3#p1"],["机制","债务过重三风险（无弹性/收入变动/无腾挪空间）；<b>化解债务</b>：偿还已有债务 + 遏制新增债务；缓解手段三类——降利率 / <b>量化宽松</b>（难惠及穷人、拉大差距）/ <b>赤字货币化</b>（国民党 1948 教训）；我国<b>不搞「大水漫灌」</b>：怕推高房价（「房住不炒」底线）+ 货币政策治标不治本。","part0040#p3#p7#p11"],["论据","2018 债务/GDP = <b>258%</b>（美 257%、德 173%、巴西 158%、印度 123%）；部门结构：居民债务接近发达国家、政府低于发达国家、<b>企业债务（154%）远超发达国家</b>；产能过剩三角度（效率/国际失衡/产业升级）；上海情侣月入 5 万月供 3 万案例。","part0040#p4#p1#p2"]]},
+{n:"7",t:"国内国际失衡",p:"低消费 · 中美冲突",rows:[["论点","中国崛起受益全球化但因<b>自身体量大</b>冲击全球体系；模式三大特点：城市化「<b>重土地、轻人</b>」、招商引资「<b>重规模、重扩张</b>」、经济结构「<b>重投资、重生产、轻消费</b>」。","part0051#p1"],["机制","<b>低消费成因</b>：居民消费 = 收入 − 储蓄；2018 居民消费占 GDP <b>44%</b>（美国近 70%、欧洲日本约 55%）；高储蓄主流解释 = <b>计划生育 + 政府民生支出不足 + 房价上涨</b>三因叠加，都指向地方政府行为。<b>再平衡</b>：2020「双循环」三途径——人口向大城市集聚 / 资源转向居民 / 拓宽财产性收入。","part0048#p1#p9#p4"],["论据","2010 制造业增加值超美国、2019 占全球 28%（20 年前约 5%）；2019 我国 GDP = 1960 年全球 GDP 总量；「中国制造抢走美国工作」辨析：美国制造业就业<b>从 70 年代起就在下降</b>（26%→个位数），中国入世只是加速而非起点。","part0047#p3#p7"]]},
+{n:"8",t:"总结：政府与经济发展",p:"地区竞争 · 转型",rows:[["论点","落后国家能否赶超，<b>关键在于能否找到一套适合国情的组织和动员资源的方式</b>；「有效的市场机制本身就是不断建设的结果」，政府作用是否构成前提取决于发展阶段；强调政府作用 ≠ 鼓吹计划经济。","part0053#p4#p5#p6"],["机制","<b>地区间竞争</b>：「属地管理 + 地方竞争」构成基本模式；「<b>官场+市场</b>」把官员晋升与地区经济挂钩，但有三大差别——缺淘汰机制（政府不会倒闭）/ 多目标约束 / 滋生腐败。<b>政府转型</b>：瓦格纳法则（国家越富政府占经济比重越大）；产权保护对发展中国家是「发展的结果」而非「前提」；生产型政府 → 服务型政府。","part0054#p3#p8#p1"],["论据","三线建设（1964 起）分散工业布局，为改革后地方竞争奠基；乡镇企业培训农民成工人；增值税占全国税入 40%（发票+买卖双方互相监督，好征）、公司所得税 24%、个税不足 7%；广东等 5 省单独都是世界前 20 经济体。","part0054#p4#p7#p5"]]}
+];
+function renderChs(id,arr){var h="";arr.forEach(function(c){h+='<details class="ch"><summary><span class="ch-no">'+c.n+'</span><span><span class="ch-title">'+c.t+'</span><span class="ch-pos">'+c.p+'</span></span><span class="ch-arrow">›</span></summary><div class="ch-body">'+c.rows.map(function(r){return '<div class="row"><span class="k k-'+r[0]+'">'+r[0]+'</span><span class="txt">'+r[1]+'</span> <span class="loc">['+r[2]+']</span></div>';}).join('')+'</div></details>';});document.getElementById(id).innerHTML=h;}
+renderChs('chapters',CHS.slice(0,4));renderChs('chapters2',CHS.slice(4));
+document.addEventListener('toggle',function(e){if(e.target.classList&&e.target.classList.contains('ch')&&e.target.open){document.querySelectorAll('details.ch').forEach(function(d){if(d!==e.target)d.removeAttribute('open');});}},true);
+var TL=[1985,1988,1994,1998,2000,2001,2003,2004,2008,2010,2012,2015,2016,2018,2020];
+var TL2={1985:"农村包产、城市承包、政府财政承包。1985—93 地方收支较匹配，但分成比例各地不同、需反复谈判，地方有动力扩张税源（兴办乡镇企业）。",1988:"北京「收入递增包干」：1987 基数、年增 4% 以内与中央五五分成、超出全归地方；广东 1988 上解 14 亿、此后年递增 9%，上解负担实际越来越轻。",1994:"中央占比从 22% 跃至 55%——「两个比重」下滑削弱国家财政能力，必须财权上收；但地方「以经济建设为中心」任务不变、财力减少，为土地财政埋下伏笔。",1998:"停止福利分房（商品房时代拉开，1997—2002 城镇住宅新开工年均 +26%）+ 土地管理法修订（锁死农地直接入市）——农地必须先征为国有，土地稀缺价值凸显。",2000:"农村税费改革减轻农民负担，但让本就困难的基层财政更艰难，之后改革加大上级统筹与转移支付。",2001:"加入 WTO 后中国迅速成为「世界工厂」；所得税分成改革时地方出现突击征税现象（图2-3）。",2003:"「乡财县管」/「三奖一补」/「省直管县」（源于浙江）——财政五级「拉平」为三级，缓解「市压县、市刮县」。",2004:"土地「招拍挂」（招标/拍卖/挂牌）全面推行，转让从不透明走向公开竞价，「第二财政」兑现。",2008:"金融危机、出口订单锐减，刺激力度空前，地方大规模负债投资；京东方「城投定增 18 亿 + 国开行银团 16 亿」建成都 4.5 代线（总投资 34 亿）。",2010:"制造业增加值超美国成全球第一；总消费占 GDP 降至 50%（80 年代 65%）——内需不足失衡显性化。",2012:"欧美对华光伏「双反」、欧债危机削减补贴，尚德等陷入危机；同年液晶面板进口 500 亿美元（仅次于芯片、石油、铁矿石）。",2015:"新预算法允许省级政府发债、逐步规范政府举债；供给侧结构性改革启动，「去杠杆」成为首要任务之一。",2016:"环保机构垂直化改革（省以下以省厅垂直领导为主）——用上收权力纠正激励不相容。",2018:"债务/GDP 达 258%；中美贸易战开打——「中国制造抢走工作」成核心叙事，但美国制造业就业 70 年代起就在下降。",2020:"提出「双循环」：以国内大循环为主体、双循环相互促进——提高居民收入与消费，同时强调扩大开放。"};
+(function(){var h="";TL.forEach(function(y){var ev=TL2[y]||"";h+='<div class="tl-item" data-y="'+y+'" onclick="tl('+y+')"><div class="dot"></div><div class="yr">'+y+'</div><div class="ev">'+ev.slice(0,14)+'…</div></div>';});document.getElementById('tl').innerHTML=h;})();
+function tl(y){document.querySelectorAll('.tl-item').forEach(function(i){i.classList.toggle('open',i.getAttribute('data-y')==y);});var d=document.getElementById('tlD');if(TL2[y]){d.innerHTML='<b>'+y+' ·</b> '+TL2[y];d.classList.add('show');}}
+var CHN=[["制度","1994 分税制","<b>财权上收、事权下压。</b>增值税/消费税大头划归中央（占比 22%→55%），但「以经济建设为中心」仍压在地方——钱少一半、活没少，这是整条链的起点。"],["行为①","土地财政+金融","<b>地方找钱的答案。</b>招拍挂（2004）撑起「第二财政」（年五六万亿）；城投把土地未来收入资本化融资（贷款/发债），靠土地+补贴+隐性担保三支柱——土地财政放大为土地金融。"],["行为②","招商引资+产业政策","<b>钱花向哪。</b>增值税在生产环节征收→偏爱重资产制造业；政府投资+城投定增+国开行支持京东方/光伏（引导基金做 LP）——成就工业奇迹，也埋下产能过剩与债务。"],["现象","城市化失衡+债务风险","<b>三重后果。</b>①「重土地轻人」→房价推高居民债务；②债务/GDP 258%、企业 154%；③低消费（44%）→产能过剩→输出→贸易冲突。"],["反思","生产型→服务型","<b>出路是改革。</b>「双循环」再平衡、「房住不炒」限制土地财政、加大民生支出；区分发展过程与发展目标——过去的成功经验不能一直有效。"]];
+(function(){var h="";CHN.forEach(function(c,i){if(i>0)h+='<span class="ca">→</span>';h+='<div class="cn" id="cn'+i+'" onclick="cn('+i+')">'+c[0]+'<small>'+c[1]+'</small></div>';});document.getElementById('cc').innerHTML=h;})();
+function cn(i){var d=document.getElementById('cd');CHN.forEach(function(_,j){document.getElementById('cn'+j).classList.toggle('on',j===i);});d.innerHTML='<b>'+CHN[i][1]+'：</b>'+CHN[i][2];d.classList.add('show');}
+var QZ=[["负面反馈的正确顺序是？（《可复制的领导力》的工具，跨书自测）",["先批评态度再讲后果","行为事实→影响→后果（BIC）","先表扬再指出所有问题"],1,"BIC 强调描述具体行为（非观点）、影响与长期后果，对事不对人。","ch8#p6"],["1994 年分税制改革前「两个比重」下降的直接后果是？",["地方财政越来越宽裕","中央财政能力被严重削弱","企业税负大幅下降"],1,"中央占比缩水（一度仅 22%），无力补偿改革受损者与调节地区差距——分税制的直接动因。","part0016#p10"],["2018 年末中国债务约为 GDP 的多少？",["123%","173%","258%"],2,"258%，与美国（257%）持平；企业债务 154% 远高于发达国家。","part0040#p4"],["「中国制造抢走了美国工人的工作」——问题在哪？",["中国出口数据造假","美国制造业就业从 1970s 起就在下降","美国工人不愿做制造业"],1,"美国制造业就业占比从 70 年代 26% 一路降到个位数，中国入世只是加速（15%→11%）而非起点。","part0049#p7"],["中国第一大税种是什么？为什么相对好征？",["个人所得税，收入透明","增值税，有发票且买卖双方互相监督","房产税，资产清晰"],1,"增值税占全国税入 40%（公司所得税 24%、个税不足 7%），靠发票凭证和买卖双方利益不一致互相监督。","part0055#p7"]];
+(function(){var h="";QZ.forEach(function(q,i){h+='<div class="quiz"><div class="q">'+(i+1)+'. '+q[0]+'</div><div class="opts">';q[1].forEach(function(o,j){h+='<button class="opt" onclick="ans(this,'+i+','+j+')">'+'ABCD'[j]+'. '+o+'</button>';});h+='</div><div class="fb"><b>解析：</b>'+q[2]+' <span class="loc">['+q[3]+']</span></div></div>';});document.getElementById('quiz').innerHTML=h;})();
+function ans(btn,qi,oi){var q=QZ[qi],box=btn.parentNode;box.querySelectorAll('.opt').forEach(function(b){b.disabled=true;});q[1].forEach(function(_,j){if(j===q[2])box.children[j].classList.add('right');});if(oi!==q[2])btn.classList.add('wrong');btn.parentNode.parentNode.querySelector('.fb').classList.add('show');}
+var QTS=[["在我国，政府不但影响「蛋糕」的分配，也参与「蛋糕」的生产，所以我们不可能脱离政府谈经济。","前言 · part0005#p2"],["土地本身并不值钱，值钱的是土地之上的经济活动。","第三章 · part0021#p3"],["土地的资本化，实质是个人收入的资本化。","第五章 · part0034#p3"],["人们在乐观时往往会低估负债的风险，过多借债。","第六章 · part0040#p3"],["即便有人受损，也该支持自由贸易……但整体得益不等于让每个人都得益。","第八章 · part0056#p8"],["「有为政府」和「有效市场」一样，都不是天然就存在的，需要不断建设和完善。","第八章 · part0055#p8"],["落后国家能否赶超，关键在于能否找到一套适合国情的组织和动员资源的方式。","第八章 · part0053#p4"],["有效的市场机制本身就是不断建设的结果。","第八章 · part0053#p5"],["生活过得好一点，比大多数宏伟更宏伟。","结束语 · part0059#p6"]];
+(function(){document.getElementById('quotes').innerHTML=QTS.map(function(q){return '<div class="quote">'+q[0]+'<span class="loc">—— '+q[1]+'</span></div>';}).join('');})();
+var FIGS=["图1-1 行政区划（2018）","图2-1 地方预算收支占全国比重","图2-2 「两个比重」变化","图2-3 地方税收税种占比","图2-4 土地转让收入占地方预算比重","图2-5 100城土地出让均价","图2-6 苏浙粤vs云贵甘人均财力","图3-1 「土地财政」与「土地金融」","图4-1 私募基金运作模式","图5-1 城镇人口占总人口比重","图5-2 居民债务/GDP","图5-3 中美各省GDP与人口占比","图5-4 世界极端贫困人口变化","图6-1 中美德日债务/GDP","图6-2 中国宏观债务/GDP","图6-3 部门债务/GDP（企业154%）","图7-1 各国制造业占全球比重","图7-2 中国消费/GDP","图7-3 居民收入与储蓄","图7-5 经常账户差额占全球GDP","图7-6 美国制造业就业占比"];
+(function(){document.getElementById('figs').innerHTML=FIGS.map(function(f){return '<div class="fig">'+f+'</div>';}).join('');})();
+var TERMS=[["分税制（1994）","中央与地方按税种划分收入，把增值税、消费税等大头划归中央——全书故事的制度起点。","part0016"],["「两个比重」","中央财政占全国财政总收入的比重 + 国家预算总收入占 GDP 的比重；1980s 持续下滑（中央一度仅 22%），直接催生分税制。","part0016#p10"],["土地财政","地方政府依赖土地使用权转让收入（「第二财政」，每年五六万亿），一手靠预算「吃饭」、一手靠土地「办事」。","part0017"],["土地金融","把与土地相关的未来收入资本化，通过城投公司融资（贷款、发债），成倍放大土地财政（图3-1）。","part0021#p4"],["城投公司","地方政府不能直接贷款、2015 前不能发债，于是成立的国有独资融资公司。","part0022#p3"],["隐性担保","《担保法》禁止政府为平台担保，但市场默认平台背后有政府信用（成都文旅获 AA+、授信 176 亿）。","part0022#p9"],["招拍挂","招标/拍卖/挂牌——2004 年起全面推行的经营性土地出让方式，「第二财政」由此兑现。","part0017#p10"],["瓦格纳法则","国家越富裕，政府支出占国民经济的比重越大。","part0055#p1"],["官场+市场","官员晋升激励与地区经济表现挂钩的竞争体制——既在市场竞争，也在官场竞争。","part0054#p8"],["双循环（2020）","以国内大循环为主体、国内国际双循环相互促进的新发展格局——再平衡战略。","part0050#p1"],["激励相容","一方想做的事，另一方既有意愿也有能力做好——决定垂直管理还是属地放权的标准。","part0011#p1"],["三线建设","1964 年起在中西部建设分散的工业体系，为改革开放后的地方竞争奠定基础。","part0054#p4"]];
+(function(){document.getElementById('terms').innerHTML=TERMS.map(function(t){return '<details class="term"><summary>'+t[0]+'</summary><div class="tdef">'+t[1]+' <span class="loc">['+t[2]+']</span></div></details>';}).join('');})();
+var ACTS=[["读政经新闻先问一句","地方政府在这件事里的收入/支出/债务结构是什么？"],["看政府文件盯资金流向","而不是文件措辞——财政不是纯粹的经济问题。"],["分析城市房价先查两样","土地出让收入 + 城投负债。"],["用分税制框架解读央地博弈","「两个比重」、转移支付、税收分成。"],["判断行业机会算上政府","产业引导基金 + 地方招商竞争（京东方/光伏模式）。"],["读城市化数据分口径","常住 vs 户籍——2 亿人的差距在口径里。"],["看货币新闻先想「房住不炒」","不搞大水漫灌的两条理由。"],["用产能过剩三角度拆新闻","生产效率 / 国际失衡 / 产业升级。"],["区分发展目的与过程","别拿发达国家标尺直接评判中国现象。"],["养成双维比较习惯","空间（跨地区）+ 时间（跨时期）。"]];
+(function(){document.getElementById('acts').innerHTML=ACTS.map(function(a){return '<li><b>'+a[0]+'：</b>'+a[1]+'</li>';}).join('');})();
+window.addEventListener('scroll',function(){var h=document.documentElement,sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;document.getElementById('pbar').style.width=sc+'%';document.getElementById('backtop').classList.toggle('show',sc>12);});
+</script>
+</body>
+</html>

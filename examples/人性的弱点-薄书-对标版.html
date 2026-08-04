@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《人性的弱点》薄书 · 对标升级版</title>
+<style>
+:root{--paper:#F5F1E8;--card:#fff;--ink:#21252B;--ink2:#6A6F78;--ink3:#9A958A;--navy:#1E3A5F;--navy2:#2E5179;--navy-soft:#E8EEF5;--gold:#B98A2F;--gold2:#D9B45C;--gold-soft:#F3E9D3;--teal:#0F6E56;--teal-soft:#E3F1EC;--red:#A32D2D;--red-soft:#F9E9E9;--green:#3B6D11;--green-soft:#F0F5E7;--line:#E7E0D2;--line2:#D8D0BF;--serif:"Songti SC","STSong","SimSun",Georgia,serif;--sans:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--mono:Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.7;padding-bottom:60px}
+#pbar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;z-index:99}
+.top{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:9px 14px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:14px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:7px}
+.brand .mk{width:25px;height:25px;border-radius:7px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:12px}
+.mode{display:flex;gap:3px;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:2px}
+.mode button{border:none;background:transparent;padding:4px 12px;font-size:11.5px;font-weight:600;color:var(--ink2);border-radius:99px;cursor:pointer;font-family:var(--sans)}
+.mode button.on{background:var(--navy);color:#fff}
+.tabs{display:flex;gap:4px;flex:1;justify-content:flex-end;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink2);padding:5px 12px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.tab:hover{border-color:var(--gold);color:var(--gold)}
+.tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+.panel{display:none;margin-top:14px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-bottom:12px;box-shadow:0 1px 2px rgba(33,37,43,.04)}
+.h{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.h .no{width:23px;height:23px;border-radius:7px;background:var(--navy);color:#fff;font-size:11.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hint{font-size:11px;color:var(--ink3);margin:-4px 0 10px}
+.core{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:10px;padding:18px 22px;text-align:center}
+.core .lb{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:700}
+.core p{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy);margin-top:6px;line-height:1.7}
+/* 速读精华 */
+.ess{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;border:1px solid var(--line);border-radius:9px;margin-bottom:7px;background:var(--paper)}
+.ess .en{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.ess .et{font-size:12.5px;color:var(--ink)}
+.ess .et b{color:var(--navy)}
+/* 信心徽章 */
+.cf{display:inline-block;font-size:9px;font-weight:700;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:1px;letter-spacing:.5px}
+.cfA{background:var(--green-soft);color:var(--green)}
+.cfB{background:#E8F4E0;color:#5B8A24}
+.cfC{background:var(--gold-soft);color:var(--gold)}
+.cfD{background:var(--paper);color:var(--ink3);border:1px solid var(--line2)}
+/* 原则地图 */
+.pmap{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:6px}
+.pchip{border:1px solid var(--line);border-radius:8px;background:var(--paper);padding:7px 9px;font-size:11px;color:var(--ink);cursor:pointer;transition:all .12s;text-align:center;line-height:1.4}
+.pchip:hover{border-color:var(--gold);background:var(--gold-soft)}
+.pchip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.pchip .n{display:block;font-size:8.5px;color:var(--ink3)}
+.pchip.on .n{color:#B9C6D6}
+.pdet{display:none;margin-top:10px;background:var(--navy-soft);border-left:4px solid var(--navy);border-radius:8px;padding:12px 16px;font-size:12.5px}
+.pdet.show{display:block}
+.pdet b{color:var(--navy)}
+/* 原则列表 */
+.prin{border:1px solid var(--line);border-radius:9px;background:var(--card);margin-bottom:7px;overflow:hidden}
+.prin summary{list-style:none;cursor:pointer;padding:9px 14px;display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600}
+.prin summary::-webkit-details-marker{display:none}
+.prin[open]{border-color:var(--gold2)}
+.prin .idx{width:21px;height:21px;border-radius:6px;background:var(--gold);color:#fff;font-size:10.5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.prin .ar{margin-left:auto;color:var(--gold);font-size:11px;transition:transform .2s}
+.prin[open] .ar{transform:rotate(90deg)}
+.prin .bd{padding:2px 14px 11px 44px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink2)}
+.prin .bd b{color:var(--navy)}
+.ptheme{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--navy);background:var(--navy-soft);border-radius:99px;padding:2px 11px;margin:10px 0 8px}
+/* 七基因 */
+.gene{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:8px}
+.gn{border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:var(--card)}
+.gn .gt{font-size:12.5px;font-weight:700;color:var(--navy)}
+.gn .gl{display:inline-block;font-size:9.5px;font-weight:700;margin:4px 0 6px;padding:1px 8px;border-radius:99px}
+.gl-main{background:var(--gold-soft);color:var(--gold)}
+.gl-mid{background:var(--navy-soft);color:var(--navy)}
+.gl-weak{background:var(--paper);color:var(--ink3);border:1px solid var(--line2)}
+.gn .gd{font-size:11px;color:var(--ink2);line-height:1.5}
+/* 深度卡 */
+.depth{border:1px solid var(--line);border-radius:10px;padding:13px 15px;margin-bottom:8px;background:var(--card)}
+.depth .dh{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:5px}
+.depth .dd{font-size:12px;color:var(--ink2)}
+.depth .dd b{color:var(--red)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.two{grid-template-columns:1fr}}
+.pro{border:1px solid #CBDCA6;border-radius:10px;padding:12px 14px;background:var(--green-soft)}
+.pro h4{font-size:12.5px;color:var(--green);margin-bottom:6px}
+.con{border:1px solid #EDC9C9;border-radius:10px;padding:12px 14px;background:var(--red-soft)}
+.con h4{font-size:12.5px;color:var(--red);margin-bottom:6px}
+.pro li,.con li{font-size:11.5px;margin-left:15px;margin-bottom:4px;color:#3a3e45}
+.verdict{margin-top:10px;font-size:12.5px;background:var(--navy-soft);border-radius:8px;padding:10px 14px}
+.verdict b{color:var(--navy)}
+.quote{position:relative;background:var(--card);border:1px solid var(--line);border-left:none;border-radius:0 10px 10px 0;padding:9px 14px 9px 22px;margin-bottom:7px;font-family:var(--serif);font-size:13px;font-weight:600;color:#33383f}
+.quote::before{content:"";position:absolute;left:0;top:0;bottom:0;width:11px;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:2px 0 0 2px}
+.quote .loc{display:block;font-family:var(--sans);font-size:9.5px;color:var(--ink3);font-weight:400}
+ol.actions{list-style:none;counter-reset:a}
+ol.actions li{counter-increment:a;position:relative;padding:7px 11px 7px 40px;background:var(--paper);border:1px solid var(--line);border-radius:8px;margin-bottom:6px;font-size:12px}
+ol.actions li::before{content:counter(a);position:absolute;left:10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-family:var(--serif)}
+ol.actions li b{color:var(--navy)}
+footer{text-align:center;font-size:11px;color:var(--ink3);margin-top:16px;font-family:var(--serif)}
+#backtop{position:fixed;right:20px;bottom:20px;width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;border:none;font-size:16px;cursor:pointer;box-shadow:0 4px 14px rgba(33,37,43,.15);opacity:0;pointer-events:none;transition:all .25s;z-index:80}
+#backtop.show{opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+<div class="top">
+  <div class="top-in">
+    <div class="brand"><span class="mk">薄</span>人性的弱点 · 对标版</div>
+    <div class="mode">
+      <button class="on" onclick="md(0)">速读 15′</button>
+      <button onclick="md(1)">精读 1h</button>
+      <button onclick="md(2)">深度</button>
+    </div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+</div>
+
+<div class="wrap" id="panels"></div>
+
+<footer>薄书 · 三阅读模式 · 信心分级 A-D · 模式 B</footer>
+<button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/* ===== 阅读模式 ===== */
+var MODES=[
+  {name:"速读 15′",tabs:["速读精华","30 原则地图"]},
+  {name:"精读 1h",tabs:["相处","喜爱","认同","领导"]},
+  {name:"深度",tabs:["七基因","批判·误读","金句·行动"]}
+];
+var curMode=0;
+function md(i){
+  curMode=i;
+  var tabs=MODES[i].tabs;
+  var th="";tabs.forEach(function(t,j){th+='<button class="tab'+(j===0?' on':'')+'" id="mt'+j+'" onclick="sw('+j+')">'+t+'</button>';});
+  document.getElementById('tabs').innerHTML=th;
+  document.querySelectorAll('.mode button').forEach(function(b,k){b.classList.toggle('on',k===i);});
+  sw(0);
+}
+/* ===== 面板容器：按当前模式渲染 ===== */
+function sw(j){
+  var P=buildPanels(curMode);
+  document.getElementById('panels').innerHTML=P[j].html;
+  document.querySelectorAll('#tabs .tab').forEach(function(b,k){b.classList.toggle('on',k===j);});
+  // 渲染各面板内的动态内容
+  if(P[j].init)P[j].init();
+  window.scrollTo({top:0});
+}
+
+/* ===== 数据 ===== */
+var RULES=[
+["如欲采蜜，勿蹴蜂房","不批评、不指责、不抱怨——批评让人防御、辩解、记恨。","第一篇·1","C"],
+["真诚地赞赏他人","人际交往的大秘窍——发自内心的欣赏，而非奉承。","第一篇·2","C"],
+["激发他人强烈需求","从对方的角度看问题，说对方想要的。","第一篇·3","C"],
+["真诚地对他人感兴趣","关心他人，比关心自己更容易让人记住你。","第二篇·1","C"],
+["永远面带微笑","最廉价也最有效的第一印象投资。","第二篇·2","C"],
+["记住他人的名字","名字是每个人听到的最甜蜜的声音。","第二篇·3","C"],
+["做一个善于倾听的人","让对方多说话，认真听——比健谈更受欢迎。","第二篇·4","C"],
+["谈论对方感兴趣的事","找到对方的兴趣点，话题自然打开。","第二篇·5","C"],
+["让对方感到自己很重要","被重视是人性最深的渴望。","第二篇·6","C"],
+["避免争论","争论永无赢家——赢了道理，输了人心。","第三篇·1","C"],
+["尊重他人意见","别说「你错了」，那会制造敌人。","第三篇·2","C"],
+["坦率承认错误","主动认错比辩解更能赢回尊重。","第三篇·3","C"],
+["从友善开始","一滴蜜糖比一加仑胆汁捕到更多苍蝇。","第三篇·4","C"],
+["让对方说「是」","苏格拉底的秘密——连续说「是」，认同自然建立。","第三篇·5","C"],
+["给对方说话的机会","处理抱怨的安全方式：让对方先说完。","第三篇·6","C"],
+["让对方觉得主意是他自己的","取得合作的关键——把决定权还给对方。","第三篇·7","C"],
+["站在他人立场看问题","创造奇迹的公式——先问「他会怎么想」。","第三篇·8","C"],
+["体谅他人的愿望","每个人要的都不一样，先搞清楚他要什么。","第三篇·9","C"],
+["激起对方高尚的动机","人人愿意相信自己是为高尚的理由做事。","第三篇·10","C"],
+["戏剧化你的想法","把道理讲成画面，电影电视都这么做。","第三篇·11","C"],
+["提出挑战","无计可施时，激发好胜心是最后的杀手锏。","第三篇·12","C"],
+["真诚赞赏开场","挑错之前，先找到值得称赞的地方。","第四篇·1","C"],
+["间接委婉地批评","不点名、不贴标签，错误更容易被接受。","第四篇·2","C"],
+["先承认自己的错误","批评别人前，先认自己的错——批评就变软了。","第四篇·3","C"],
+["用问题代替命令","「你觉得呢」比「你去做」有效得多。","第四篇·4","C"],
+["顾全对方的面子","让对方体面地下台阶，他才会感谢你。","第四篇·5","C"],
+["赞美每一个进步","真诚地鼓励微小进步，比苛求完美更见效。","第四篇·6","C"],
+["给他人好名声","给一个美名，他会努力去配得上它。","第四篇·7","C"],
+["让错误显得容易改正","把大问题拆成小步骤，改起来才不绝望。","第四篇·8","C"],
+["让对方乐于去做","授权 + 让结果与他相关，他才会主动。","第四篇·9","C"]
+];
+var ESS=[["别批评","批评让人防御、辩解、记恨——这是全书最反直觉的一条，也是第一课。","C"],["真诚赞赏，说清原因","「你真棒」没用，要说清「好在哪、因为什么」。","C"],["从对方的角度说话","说对方想要的，而不是你想要的——换位是全书灵魂。","C"],["低成本高回报三件套","记住名字 + 微笑 + 认真倾听，性价比最高的社交投资。","C"],["争论永无赢家","赢了道理，输了人心；用提问让对方自己说「是」。","C"],["批评的三条安全阀","赞赏开场、间接委婉、保全对方面子。","C"],["核心公式","把对方的需要，放在自己的表达之前。","C"]];
+var THEMES=[["与人相处的基本技巧（3 条）","批评永远解决不了问题——它让人防御、辩解、记恨","C"],[],[],[],["改变他人而不加冒犯（9 条）","批评不改人，让人「愿意改」才是目的","C"]];
+var SECS=[[3,0],[6,3],[12,9],[9,21]];
+var GENES=[
+["论证","主","30 条原则构成「人性洞察→行为推论」的完整论证体系——提取逻辑链而非散句"],
+["经验","主","林肯、富兰克林、夏布等真实案例作为原则的「活证据」"],
+["美学","中","金句化表达（如欲采蜜勿蹴蜂房）——语言本身就是传播资产"],
+["人物","中","历史人物作为方法载体（罗斯福记名字、林肯不批评）"],
+["叙事","辅","案例故事化，服务论证而非独立存在"],
+["模型","弱","无复杂模型，原则即模型——提取时以清单呈现"],
+["历史数据","弱","无数据支撑，判断时以经验代替证据（局限所在）"]
+];
+var BLIND=[
+["常见误读 1","把本书读成「操纵别人」的话术书","书中反复强调真诚是前提（赞赏须发自内心、批评须为对方好），技巧只是放大器；但叙事方式确实容易让人只记住技巧——这是本书传播中的最大失真"],
+["常见误读 2","把卡耐基与钢铁大王卡内基混淆","作者是戴尔·卡耐基（人际教育），不是安德鲁·卡内基（钢铁）；书中案例里的「卡内基」指后者，两者经常被搞混"],
+["作者盲点 1","1936 年的经验缺乏现代实证","「15% 专业知识 / 85% 人际能力」等说法无严谨数据支撑；「永远不要批评」在当代管理语境下过于绝对（建设性反馈已被证明有效）"],
+["作者盲点 2","回避了权力不对等关系","上下级、强弱关系中「让对方觉得主意是他自己的」可能失效——职场中真实的利益结构比个人技巧更重要"],
+["作者盲点 3","把复杂人际简化为技巧清单","低估了长期关系中的利益、冲突与边界；原则在亲密关系/商业谈判等场景需大幅调整"]
+];
+var CRIT=[
+["✓ 最值钱","把「被重视」确立为人际核心需求（心理学反复印证）；30 条原则可执行，是「明天就能用」的书；案例真实好记"],
+["✕ 打折扣","技巧易学成话术——真诚是护城河；15%/85% 缺实证；「永不批评」过于绝对；案例年代久远，跨文化需打折"]
+];
+var QTS=[["批评是无用的，它使人处于防御状态，并使人竭力为自己辩护。","第一篇 · 流传版 · D"],["人性中最深层的渴望，就是得到别人的重视。（引威廉·詹姆斯）","第一篇 · C"],["如欲采蜜，勿蹴蜂房。","第一篇 · C"],["一个人的成功，15% 靠专业知识，85% 靠表达思想、领导他人和唤起他人热情的能力。","流传版 · D"],["记住他的名字——名字是每个人听到的最甜蜜的声音。","第二篇 · C"],["一滴蜜糖比一加仑胆汁，能捕到更多的苍蝇。","第三篇 · C"]];
+var ACTS=[["今天真诚赞美一个人","具体说明原因，不是「你真棒」。"],["批评前停 10 秒","把「你怎么又错了」换成「你觉得有没有更好的办法？」"],["记住 3 个新名字","下次见面直接叫出来。"],["做一次纯倾听练习","不打断、不插话，复述对方观点。"],["从对方角度重写一封邮件","把「我要……」改成「这对你有什么好处……」"],["主动承认一次错误","哪怕你占理，观察对方的反应。"],["用「你觉得呢」代替命令","让下属/家人自己说出方案。"],["私下纠错","当众指出的问题改为一对一沟通。"],["给一个人「美名」","告诉他你相信他能做好，看他怎么回应。"],["家庭微行动","今天停止一句唠叨，换成一句具体的欣赏。"]];
+
+/* ===== 面板构建 ===== */
+function cf(lv){return '<span class="cf cf'+lv+'">'+lv+' 级</span>';}
+function buildPanels(m){
+  var list=[];
+  function push(title,html,init){list.push({title:title,html:html,init:init});}
+  if(m===0){
+    var esh='';ESS.forEach(function(e,i){esh+='<div class="ess"><span class="en">'+(i+1)+'</span><div class="et"><b>'+e[0]+'</b>——'+e[1]+cf(e[2])+'</div></div>';});
+    push('速读精华','<div class="card"><div class="core"><div class="lb">CORE THESIS · 一句话核心</div><p>人际交往的成功不靠话术，而靠抓住人性根本需求——被重视、被赞赏、被理解；30 条原则都是把「真诚地尊重他人」变成日常动作。</p></div></div><div class="card"><div class="h"><span class="no">读</span>7 条速读精华<span class="hint" style="margin-left:auto">15 分钟版 · 每条约 1 分钟</span></div>'+esh+'</div>');
+    push('30 原则地图','<div class="card"><div class="h"><span class="no">图</span>30 条原则地图<span class="hint" style="margin-left:auto">点击查看 · 归属四篇</span></div><div class="pmap" id="pmap"></div><div class="pdet" id="pdet"></div></div>',function(){
+      var h="";RULES.forEach(function(r,i){h+='<div class="pchip" onclick="pm('+i+')"><span class="n">'+r[2]+'</span>'+r[0]+'</div>';});
+      document.getElementById('pmap').innerHTML=h;
+    });
+  } else if(m===1){
+    var names=["相处","喜爱","认同","领导"];
+    names.forEach(function(nm,si){
+      var sec=SECS[si],h2='';
+      for(var k=0;k<sec[0];k++){var i=sec[1]+k,r=RULES[i];
+        h2+='<details class="prin"><summary><span class="idx">'+r[2].slice(-1)+'</span>'+r[0]+cf(r[3])+'<span class="ar">›</span></summary><div class="bd">'+r[1]+'</div></details>';}
+      push(nm,'<div class="card"><div class="h"><span class="no">'+names[si]+'</span>'+THEMES[si][0]+'<span class="hint" style="margin-left:auto">点击展开</span></div><div class="ptheme">论点：'+THEMES[si][1]+'</div>'+h2+'</div>');
+    });
+  } else {
+    var gh='';GENES.forEach(function(g){gh+='<div class="gn"><div class="gt">'+g[0]+'</div><span class="gl gl-'+g[1]+'">'+g[1]+'</span><div class="gd">'+g[2]+'</div></div>';});
+    push('七基因','<div class="card"><div class="h"><span class="no">基</span>七基因分析 · 本书 DNA<span class="hint" style="margin-left:auto">判定提取重心</span></div><div class="gene">'+gh+'</div><div class="darkline" style="margin-top:4px"><b>提取策略：</b>主攻「论证 + 经验」——抓原则体系的逻辑链，用案例做论据；「美学」层产出金句；「人物」层做记忆锚点；弱基因不硬挖。</div></div>');
+    var bh='';BLIND.forEach(function(b){bh+='<div class="depth"><div class="dh">'+b[0]+'：'+b[1]+'</div><div class="dd">'+b[2]+'</div></div>';});
+    var ch='';CRIT.forEach(function(c,i){ch+='<div class="'+(i===0?'pro':'con')+'"><h4>'+c[0]+'</h4><ul>'+c[1].split('；').map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>';});
+    push('批判·误读','<div class="card"><div class="h"><span class="no">信</span>信心分级说明<span class="hint" style="margin-left:auto">A=原文精读 B=原文略读 C=网络多源 D=网络单源</span></div><div style="font-size:12px;color:var(--ink2);background:var(--paper);border-radius:8px;padding:10px 14px">本书为「书名检索模式」，无原书文本：原则体系与篇章结构为 <span class="cf cfC">C 级</span>（百度百科/孔夫子/中华书局目录多源一致）；金句为 <span class="cf cfD">D 级</span>（流传版，非逐字原文）。若用户提供 EPUB/PDF，将升级为 A/B 级锚点引用。</div></div><div class="card"><div class="h"><span class="no">误</span>常见误读与作者盲点</div>'+bh+'</div><div class="card"><div class="h"><span class="no">评</span>批判性评论</div><div class="two">'+ch+'</div><div class="verdict"><b>一句话评价：</b>一本「人际操作系统」——当<b>行动手册</b>读价值极高，当<b>心理学真理</b>读请保持批判。</div></div>');
+    var qh='';QTS.forEach(function(q){qh+='<div class="quote">'+q[0]+'<span class="loc">—— '+q[1]+'</span></div>';});
+    var ah='';ACTS.forEach(function(a){ah+='<li><b>'+a[0]+'：</b>'+a[1]+'</li>';});
+    push('金句·行动','<div class="card"><div class="h"><span class="no">句</span>金句摘录（含信心分级）</div>'+qh+'</div><div class="card"><div class="h"><span class="no">行</span>可执行清单 · 10 件</div><ol class="actions">'+ah+'</ol></div>');
+  }
+  return list;
+}
+function pm(i){
+  var r=RULES[i];document.querySelectorAll('.pchip').forEach(function(c,j){c.classList.toggle('on',j===i);});
+  var d=document.getElementById('pdet');d.innerHTML='<b>'+r[0]+'（'+r[2]+'）</b>——'+r[1]+cf(r[3]);d.classList.add('show');
+}
+md(0);
+window.addEventListener('scroll',function(){var h=document.documentElement,sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;document.getElementById('pbar').style.width=sc+'%';document.getElementById('backtop').classList.toggle('show',sc>12);});
+</script>
+</body>
+</html>
