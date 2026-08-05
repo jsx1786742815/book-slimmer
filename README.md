@@ -9,6 +9,8 @@
 ![Python](https://img.shields.io/badge/python-3.10%2B-orange)
 ![Input](https://img.shields.io/badge/input-PDF%20%7C%20EPUB%20%7C%20书名-purple)
 
+> 🖼 **看成品** → [薄书作品集（6 本书 · 5 种书型）](portfolio.html)
+
 ---
 
 ## ✨ 特性
