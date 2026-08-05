@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《可复制的领导力》薄书 · 三阅读模式</title>
+<style>
+:root{--paper:#F5F1E8;--card:#fff;--ink:#21252B;--ink2:#6A6F78;--ink3:#9A958A;--navy:#1E3A5F;--navy2:#2E5179;--navy-soft:#E8EEF5;--gold:#B98A2F;--gold2:#D9B45C;--gold-soft:#F3E9D3;--teal:#0F6E56;--teal-soft:#E3F1EC;--red:#A32D2D;--red-soft:#F9E9E9;--green:#3B6D11;--green-soft:#F0F5E7;--orange:#B4530A;--orange-soft:#FBEFE3;--line:#E7E0D2;--line2:#D8D0BF;--serif:"Songti SC","STSong","SimSun",Georgia,serif;--sans:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--mono:Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.75;padding-bottom:70px}
+#pbar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;z-index:99}
+.top{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:9px 14px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
+.brand .mk{width:26px;height:26px;border-radius:7px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:13px}
+.tabs{display:flex;gap:4px;flex:1;justify-content:flex-end;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink2);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.tab:hover{border-color:var(--gold);color:var(--gold)}
+.tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+.panel{display:none;margin-top:16px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin-bottom:14px;box-shadow:0 1px 2px rgba(33,37,43,.04)}
+.h{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.h .no{width:24px;height:24px;border-radius:7px;background:var(--navy);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hint{font-size:12.5px;color:var(--ink3);margin:-6px 0 12px}
+.core{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:10px;padding:20px 24px;text-align:center}
+.core .lb{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:700}
+.core p{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--navy);margin-top:8px;line-height:1.7}
+.lv{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:99px;margin-left:6px;vertical-align:1px;font-family:var(--mono)}
+.lv-C{background:#FBEFE3;color:#B4530A}.lv-D{background:#F3E9D3;color:#8a6d1f}
+.spd{display:flex;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--card);align-items:flex-start}
+.spd .sn{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:var(--red);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:var(--serif)}
+.spd .st{font-size:13px;font-weight:700;color:var(--ink)}
+.spd .sd{font-size:12.5px;color:var(--ink2);margin-top:2px}
+.chaincard{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:10px}
+.chaincard .ct{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.chaincard .cd{font-size:12.5px;color:var(--ink2)}
+details.ch{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--card);overflow:hidden}
+details.ch summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:10px}
+details.ch summary::-webkit-details-marker{display:none}
+details.ch[open]{border-color:var(--gold2)}
+.ch-no{width:28px;height:28px;border-radius:8px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;font-family:var(--serif);flex-shrink:0}
+.ch-title{font-family:var(--serif);font-size:13.5px;font-weight:700;color:var(--ink)}
+.ch-pos{font-size:10.5px;color:var(--ink3);display:block}
+.ch-arrow{margin-left:auto;color:var(--gold);transition:transform .2s}
+details.ch[open] .ch-arrow{transform:rotate(90deg)}
+.ch-body{padding:2px 16px 14px;border-top:1px solid var(--line)}
+.cell{margin-top:9px;padding-left:11px;border-left:2px solid var(--line);font-size:12.5px;color:#3a3e45}
+.cell .k{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;padding:1px 7px;border-radius:5px;margin-right:7px;vertical-align:1px}
+.k-judge{background:var(--gold-soft);color:var(--gold)}
+.k-logic{background:var(--navy-soft);color:var(--navy)}
+.k-ev{background:var(--teal-soft);color:var(--teal)}
+.txt b{color:var(--navy)}
+.loc{font-family:var(--mono);font-size:10.5px;color:var(--ink3)}
+.gene{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:8px}
+.gi{border:1px solid var(--line);border-radius:10px;padding:10px 13px;background:var(--paper)}
+.gi .gn{font-size:13px;font-weight:700;color:var(--navy)}
+.gi .gs{font-size:11.5px;color:var(--ink2);margin-top:2px}
+.gi .lv{float:right;margin-top:2px}
+details.fold{border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden;margin-bottom:8px}
+details.fold summary{list-style:none;cursor:pointer;padding:11px 15px;font-size:13px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
+details.fold summary::-webkit-details-marker{display:none}
+details.fold summary::before{content:"＋";color:var(--gold);font-weight:700}
+details.fold[open] summary::before{content:"－"}
+details.fold .fb{padding:2px 15px 13px 28px;font-size:12.5px;color:var(--ink2);border-top:1px dashed var(--line)}
+details.fold .fb b{color:var(--navy)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.two{grid-template-columns:1fr}}
+.pro{border:1px solid #CBDCA6;border-radius:10px;padding:14px 16px;background:var(--green-soft)}
+.pro h4{font-size:13px;color:var(--green);margin-bottom:6px}
+.con{border:1px solid #EDC9C9;border-radius:10px;padding:14px 16px;background:var(--red-soft)}
+.con h4{font-size:13px;color:var(--red);margin-bottom:6px}
+.pro li,.con li{font-size:12.5px;margin-left:16px;margin-bottom:4px;color:#3a3e45}
+.verdict{margin-top:10px;font-size:13px;background:var(--navy-soft);border-radius:8px;padding:10px 14px}
+.verdict b{color:var(--navy)}
+.quote{position:relative;background:var(--card);border:1px solid var(--line);border-left:none;border-radius:0 10px 10px 0;padding:10px 15px 10px 22px;margin-bottom:8px;font-family:var(--serif);font-size:14px;font-weight:600;color:#33383f}
+.quote::before{content:"";position:absolute;left:0;top:0;bottom:0;width:11px;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:2px 0 0 2px}
+.quote .loc{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink3);font-weight:400}
+ol.actions{list-style:none;counter-reset:a}
+ol.actions li{counter-increment:a;position:relative;padding:9px 13px 9px 46px;background:var(--paper);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;font-size:13px}
+ol.actions li::before{content:counter(a);position:absolute;left:11px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--serif)}
+ol.actions li .how{display:block;font-weight:700;color:var(--navy)}
+ol.actions li .eg{display:block;font-size:12px;color:var(--ink2);margin-top:2px}
+#backtop{position:fixed;right:20px;bottom:22px;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;border:none;font-size:17px;cursor:pointer;box-shadow:0 4px 14px rgba(33,37,43,.15);opacity:0;pointer-events:none;transition:all .25s;z-index:80}
+#backtop.show{opacity:1;pointer-events:auto}
+footer{text-align:center;font-size:11.5px;color:var(--ink3);margin-top:16px;font-family:var(--serif)}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+<div class="top">
+  <div class="top-in">
+    <div class="brand"><span class="mk">薄</span>可复制的领导力 · 薄书</div>
+    <div class="tabs">
+      <button class="tab on" id="tb0" onclick="sw(0)">速读 15′</button>
+      <button class="tab" id="tb1" onclick="sw(1)">精读 1h</button>
+      <button class="tab" id="tb2" onclick="sw(2)">深度</button>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+
+  <section class="panel on" id="p0">
+    <div class="card">
+      <div class="core"><div class="lb">CORE THESIS · 一句话核心</div>
+      <p>领导力不是天赋，而是一套可操作、可模仿、可践行的工具与标准流程——学会它，人人都能当好管理者。</p></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">速</span>7 条速读精华<span class="lv lv-C" style="margin-left:auto">C</span></div>
+      <div class="hint">每条 1 分钟 · 要点 + 一句话解释 + 信心级别</div>
+      <div id="spd"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">链</span>全书逻辑链</div>
+      <div class="chaincard"><div class="ct">信念 → 管人 → 沟通 → 效能托底</div><div class="cd">领导力是工具（第1章）→ 第一落点是「管人」（角色/游戏化/球队式/目标管理）→ 管人的地基是「沟通」（沟通视窗/倾听/反馈）→ 都需要「个人效能」托底（时间/会议/决策）。暗线是四重修炼：信任 → 团队 → 体系 → 文化。</div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p1">
+    <div class="card">
+      <div class="hint">九章 · 每章四要素（判断 / 论证逻辑 / 论据工具 / 信心级别）· 点击展开</div>
+      <div id="chs"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p2">
+    <div class="card">
+      <div class="h"><span class="no">基</span>七基因分析</div>
+      <div class="hint">基因判定：论证 + 经验 + 模型 主 → 提取策略 = 工具清单</div>
+      <div class="gene" id="gene"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">信</span>信心分级说明</div>
+      <div class="hint">模式 B（书名联网检索）的诚信标注：要点为结构化提炼，出处精度到章节级</div>
+      <div id="conf"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">读</span>常见误读与作者盲点</div>
+      <div id="mis"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">评</span>批判性评论</div>
+      <div class="two">
+        <div class="pro"><h4>✓ 最值钱的地方</h4><ul id="pros"></ul></div>
+        <div class="con"><h4>✕ 必须打折扣的地方</h4><ul id="cons"></ul></div>
+      </div>
+      <div class="verdict" id="verdict"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">句</span>金句摘录（转述版 · 非逐字原文）</div>
+      <div id="quotes"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">行</span>可执行清单 · 读完立刻能做的 10 件事</div>
+      <ol class="actions" id="acts"></ol>
+    </div>
+  </section>
+
+  <footer>薄书 · 三阅读模式 · 信心分级 A-D · 模式 B（书名联网检索 · 多源交叉核验）</footer>
+</div>
+<button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function sw(i){for(var j=0;j<3;j++){document.getElementById('p'+j).classList.toggle('on',j===i);document.getElementById('tb'+j).classList.toggle('on',j===i);}window.scrollTo({top:0});}
+var SPD=[["领导力可以复制","它不是天赋或魅力，而是一套工具和方法——复制的是行为，不是性格。","第一章 · C"],
+["四重修炼是全书暗线","建立信任 → 建立团队 → 建立体系 → 建立文化，层层递进。","第一章 · C"],
+["管理者身兼三角色","管理（通过他人拿结果）/ 领导（通过氛围拿结果）/ 执行（自己拿结果）——比例随层级变化。","第二章 · C"],
+["游戏化组织四要素","目标明确、规则清晰、及时反馈、自愿参与——员工自愿才出战斗力。","第三章 · C"],
+["用目标管人，不用人管人","目标要可量化（公式化），人人参与制定，管理者的工作是盯目标而非盯人。","第五章 · C"],
+["乔哈里窗：扩大公开象限","公开象限越大越可信；盲点象限要靠倾听与反馈来缩小。","第六章 · C"],
+["二级反馈是全书含金量最高的动作","表扬 + 说明具体原因——零级「无动于衷」和一级「口头表扬」都喂不出执行力。","第八章 · C"]];
+(function(){document.getElementById('spd').innerHTML=SPD.map(function(s,i){return '<div class="spd"><span class="sn">'+(i+1)+'</span><div><div class="st">'+s[0]+'</div><div class="sd">'+s[1]+' <span class="lv lv-C">'+s[2]+'</span></div></div></div>';}).join('');})();
+var CHS=[
+{n:"1",t:"什么是可复制的领导力",p:"工具化 · 四重修炼",cells:[["判断","领导力不是天赋，是一套可操作的工具与标准流程——能学会、能练习、能复制。","第一章"],["论证逻辑","大多数人对领导力的误解来自「天赋论」；实际上一流的领导者都是工具化的：把管理动作标准化，普通人照做也能达标。","第一章"],["论据","四重修炼：建立信任 / 建立团队 / 建立体系 / 建立文化——全书暗线，从个人到组织层层递进。","第一章 · C"]]},
+{n:"2",t:"明确角色定位",p:"管理 / 领导 / 执行",cells:[["判断","管理者身兼三种角色：管理（通过他人拿结果）、领导（通过氛围拿结果）、执行（自己拿结果）。","第二章"],["论证逻辑","角色错位是团队混乱之源：事必躬亲的管理者其实是「高级执行者」；层级越高，「管理+领导」占比越大。","第二章"],["论据","实操标准：根据团队规模与阶段调整三角色比例，管理者越往上越要做「氛围营造者」而非「救火队员」。","第二章 · C"]]},
+{n:"3",t:"构建游戏化组织",p:"游戏化四要素",cells:[["判断","让工作像游戏一样让人自愿投入——目标、规则、反馈、自愿参与四要素。","第三章"],["论证逻辑","人的工作动力来自「清晰目标 + 明确规则 + 即时反馈 + 自愿选择」，缺一项就变成被动执行。","第三章"],["论据","对比传统「指令式管理」：游戏化不是娱乐化，而是把外在驱动转为内在驱动。","第三章 · C"]]},
+{n:"4",t:"打造球队式团队",p:"关系与一致性",cells:[["判断","团队要像球队而非家庭——共同目标高于私人关系，队员为赢而战，退役也体面。","第四章"],["论证逻辑","「家庭式」管理用情感绑架代替目标牵引，出问题就变成「养人」而非「用人」；球队式关系清晰：目标一致、能者上、体面离场。","第四章"],["论据","关键动作：明确共同目标、岗位职责边界清晰、管理者不包办员工的事。","第四章 · C"]]},
+{n:"5",t:"用目标管人，不用人管人",p:"SMART + 目标公式",cells:[["判断","管理者的核心工作是制定与跟踪目标，而非时刻盯着人。","第五章"],["论证逻辑","目标要公式化、可量化、可检验：SMART 原则 + 目标公式（如目标=方向+量化+时限），人人参与制定的目标才有执行力。","第五章"],["论据","「目标管理」比「行为管理」高效的原因：行为不可穷尽，目标可以对齐。","第五章 · C"]]},
+{n:"6",t:"利用沟通视窗",p:"乔哈里窗四象限",cells:[["判断","沟通不畅的根源是信息不对称——用乔哈里窗扩大公开象限，缩小盲点象限。","第六章"],["论证逻辑","四象限：公开（我知道你也知道）/ 隐私（我知道你不知道）/ 盲点（你不知道我知道）/ 潜能（都不知道）。扩大公开象限=主动披露+主动求反馈，信任随之增长。","第六章"],["论据","管理动作：多汇报公开信息、主动询问盲点、通过反馈机制压缩隐私象限。","第六章 · C"]]},
+{n:"7",t:"学会倾听",p:"倾听三步法",cells:[["判断","倾听是最高级的沟通——先听后说，听清才能说对。","第七章"],["论证逻辑","倾听三步：深呼吸（放下成见）/ 提问（确认信息）/ 复述（确认理解）。倾听让员工感到被尊重，是建立信任的最低成本动作。","第七章"],["论据","「听」的层次：听见 → 听懂 → 听进去；复述是检验「真听懂了」的硬标准。","第七章 · C"]]},
+{n:"8",t:"及时反馈",p:"二级反馈 + BIC",cells:[["判断","反馈是管理者的核心武器——及时、具体、对事不对人。","第八章"],["论证逻辑","反馈分级：零级（无动于衷，最伤士气）/ 一级（口头表扬，不够）/ 二级（表扬+说明具体原因，让员工知道下次该怎么做）。批评用 BIC：行为（Behavior）→ 影响（Impact）→ 后果（Consequence），描述事实而非评价人格。","第八章"],["论据","二级反馈能建立员工的自我价值感与行为锚点，是「用反馈代替控制」的关键工具。","第八章 · C"]]},
+{n:"9",t:"有效利用时间",p:"GTD + 六顶思考帽",cells:[["判断","管理者的时间要花在「重要不紧急」上——拒绝无效努力。","第九章"],["论证逻辑","GTD（Get Things Done）：清空大脑、收集-整理-执行-回顾，把任务从脑子里搬到系统里；六顶思考帽（白/红/黑/黄/绿/蓝）用于团队会议决策，一次只戴一顶帽子，减少争吵提高决策效率。","第九章"],["论据","会议与决策的常见浪费：无议程、无角色、情绪化争论——工具化即可规避。","第九章 · C"]]}
+];
+(function(){var h="";CHS.forEach(function(c){h+='<details class="ch"><summary><span class="ch-no">'+c.n+'</span><span><span class="ch-title">'+c.t+'</span><span class="ch-pos">'+c.p+'</span></span><span class="ch-arrow">›</span></summary><div class="ch-body">'+c.cells.map(function(x){return '<div class="cell"><span class="k k-'+x[0]+'">'+x[0]+'</span><span class="txt">'+x[1]+'</span> <span class="loc">['+x[2]+']</span></div>';}).join('')+'</div></details>';});document.getElementById('chs').innerHTML=h;})();
+document.addEventListener('toggle',function(e){if(e.target.classList&&e.target.classList.contains('ch')&&e.target.open){document.querySelectorAll('details.ch').forEach(function(d){if(d!==e.target)d.removeAttribute('open');});}},true);
+var GENE=[["论证","主","工具方法论贯穿全书"],["经验","主","樊登读书管理实践"],["模型","主","乔哈里窗/SMART/BIC/GTD"],["人物","中","管理者案例"],["叙事","辅","案例为论据服务"],["美学","弱","口语化讲稿风"],["历史数据","弱","极少"]];
+(function(){document.getElementById('gene').innerHTML=GENE.map(function(g){return '<div class="gi"><span class="lv lv-'+(g[1]==='主'?'C':'D')+'">'+g[1]+'</span><div class="gn">'+g[0]+'</div><div class="gs">'+g[2]+'</div></div>';}).join('');})();
+var CONF=[["A · 原文精读（锚点）","本书无此级——模式 B 无原书文本"],["B · 原文略读","无"],["C · 网络多源交叉核验","九章结构、核心工具（百科/读书笔记/课程资料一致）"],["D · 网络单源/流传版","金句与细节（读书笔记转述，非逐字原文）"]];
+(function(){document.getElementById('conf').innerHTML=CONF.map(function(c){return '<div class="cell"><span class="k k-judge">'+c[0].split('·')[0].trim()+'</span><span class="txt"><b>'+c[0].split('·').slice(1).join('·').trim()+'</b>：'+c[1]+'</span></div>';}).join('');})();
+var MIS=[["误读①「领导力=天赋/魅力」","全书第一主张就是要拆掉这个信念：领导力是行为集合，可拆解、可练习、可复制——「复制的是行为，不是性格」。"],["误读②「管理者=监督者」","管理者真正的工作是定目标、造氛围、做反馈——盯人是最低效的管理方式。"],["误读③「反馈=表扬或批评」","无效反馈（零级无动于衷、一级空泛表扬）比不反馈更伤士气；有效反馈必须具体到行为+原因。"],["盲点① 理论原创性有限","乔哈里窗/SMART/BIC/GTD/六顶思考帽均为既有工具集成，本书价值在「组装与通俗化」而非原创。"],["盲点② 案例幸存者偏差","以樊登读书等成功案例立论，缺乏失败对照；「四重修炼」等框架无严格实证。"],["盲点③ 场景偏互联网/知识型","对制造业、强流程行业的管理适配性未讨论；工具落地需要结合行业二次改造。"]];
+(function(){document.getElementById('mis').innerHTML=MIS.map(function(m){return '<details class="fold"><summary>'+m[0]+'</summary><div class="fb">'+m[1]+'</div></details>';}).join('');})();
+var PROS=["把领导力从「玄学」变成「工具箱」：每个概念都能落成具体动作，这是它最大的贡献。","工具密度高：乔哈里窗、SMART、二级反馈、BIC、GTD、六顶思考帽——拿来即用。","反直觉主张有价值：「用目标管人不用人管人」「反馈胜于控制」对新手管理者是认知升级。","逻辑链完整：信念→管人→沟通→效能，四重修炼暗线让九章不是散点。"];
+var CONS=["工具多为集成而非原创，理论深度有限——当「理论著作」读会失望。","案例幸存者偏差：成功案例立论，缺失败对照与严格实证。","场景偏向互联网/知识型企业，对传统强流程行业适配不足。","口语讲稿风，系统性稍弱；部分章节（如倾听）偏常识化。"];
+(function(){document.getElementById('pros').innerHTML=PROS.map(function(p){return '<li>'+p+'</li>';}).join('');document.getElementById('cons').innerHTML=CONS.map(function(c){return '<li>'+c+'</li>';}).join('');})();
+document.getElementById('verdict').innerHTML='<b>一句话评价：</b>给管理新手的第一本「领导力操作手册」——<b>当工具箱用，价值最高；当学术著作读，会失望</b>。最值得带走的动作是第八章的「二级反馈」。';
+var QTS=[["领导力是工具，不是天赋。","第一章 · D"],["复制的是行为，不是性格。","第一章 · D"],["管理是通过他人拿结果，领导是通过氛围拿结果。","第二章 · D"],["用目标管人，不用人管人。","第五章 · D"],["公开象限越大，信任越大。","第六章 · D"],["倾听是最高级的沟通。","第七章 · D"],["没有反馈，就没有进步。","第八章 · D"],["表扬要具体，批评要对事。","第八章 · D"],["管理者的时间要花在重要不紧急的事上。","第九章 · D"]];
+(function(){document.getElementById('quotes').innerHTML=QTS.map(function(q){return '<div class="quote">'+q[0]+'<span class="loc">—— '+q[1]+'（转述版，非逐字原文）</span></div>';}).join('');})();
+var ACTS=[["把「二级反馈」练成习惯","本周内，对下属的每次表现都用「具体行为+具体原因」给出反馈，杜绝「不错」「挺好的」这类空话。","例：不说「方案不错」，说「你第二页的数据口径核对很扎实，因为你先验证了统计范围」。"],["给团队定目标公式","用 SMART 重写团队当前目标的描述：具体、可量化、有时限、人人参与制定。","例：把「提升转化率」改成「Q3 末转化率从 3.1% 提到 3.8%，每周复盘漏斗」。"],["画一次乔哈里窗","写下自己知道的/团队知道的/彼此不知道的信息，找出盲点象限并主动问一次反馈。","例：周会问「我最近有什么你们知道而我忽略的问题？」——这就是在缩小盲点象限。"],["检查管理三角色比例","统计一周时间花在管理/领导/执行的比例，超过一半在执行，就该重新授权。","例：连续三天自己写日报=执行占比过高，把日报交给下属并教会模板。"],["用倾听三步接一次对话","下次员工找你时：深呼吸→提问→复述，全程先说后判，复述确认后再给建议。","例：员工抱怨任务太重，先复述「你是说时间不够且优先级不清，对吗？」再讨论方案。"],["给团队加「游戏化」要素","给当前项目补上即时反馈机制：里程碑可视化、完成即庆祝。","例：做一个进度看板，完成一个节点贴一个标记，团队可见可庆祝。"],["用 BIC 做一次批评","批评前想清楚：具体行为→对团队的影响→长期后果，只描述事实不评价人格。","例：不说「你太粗心了」，说「这份报表漏了 3 个数据源（行为），导致复盘推迟（影响），长此以往团队会失去信任（后果）」。"],["发起一次「球队式」对话","和团队对齐：我们的共同目标是什么、每个人边界在哪、谁该被换下场。","例：季度会上明确「这季度打赢 X 这场仗」，同时谈清不能胜任时的调整机制。"],["用六顶思考帽开一次会","下次决策会指定角色：白帽讲事实、黑帽挑风险、黄帽讲收益、绿帽出创意，一次一顶。","例：评审新产品方案，先集体戴白帽摆数据，再戴黑帽挑风险，避免一上来就吵。"],["GTD 清空大脑","把脑子里所有「待办」写进一个清单系统，分类整理，每周回顾一次。","例：用任何顺手工具，把 20 件「记在心里的事」全部倒出来，再按重要紧急排优先级。"]];
+(function(){document.getElementById('acts').innerHTML=ACTS.map(function(a){return '<li><span class="how">'+a[0]+'</span>'+a[1]+'<span class="eg">'+a[2]+'</span></li>';}).join('');})();
+window.addEventListener('scroll',function(){var h=document.documentElement,sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;document.getElementById('pbar').style.width=sc+'%';document.getElementById('backtop').classList.toggle('show',sc>12);});
+</script>
+</body>
+</html>
