@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《低风险创业》薄书 · 三阅读模式</title>
+<style>
+:root{--paper:#F5F1E8;--card:#fff;--ink:#21252B;--ink2:#6A6F78;--ink3:#9A958A;--navy:#1E3A5F;--navy2:#2E5179;--navy-soft:#E8EEF5;--gold:#B98A2F;--gold2:#D9B45C;--gold-soft:#F3E9D3;--teal:#0F6E56;--teal-soft:#E3F1EC;--red:#A32D2D;--red-soft:#F9E9E9;--green:#3B6D11;--green-soft:#F0F5E7;--orange:#B4530A;--orange-soft:#FBEFE3;--line:#E7E0D2;--line2:#D8D0BF;--serif:"Songti SC","STSong","SimSun",Georgia,serif;--sans:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;--mono:Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.75;padding-bottom:70px}
+#pbar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;z-index:99}
+.top{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:9px 14px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
+.brand .mk{width:26px;height:26px;border-radius:7px;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:13px}
+.tabs{display:flex;gap:4px;flex:1;justify-content:flex-end;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink2);padding:6px 16px;border-radius:99px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.tab:hover{border-color:var(--gold);color:var(--gold)}
+.tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+.panel{display:none;margin-top:16px}
+.panel.on{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin-bottom:14px;box-shadow:0 1px 2px rgba(33,37,43,.04)}
+.h{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.h .no{width:24px;height:24px;border-radius:7px;background:var(--navy);color:#fff;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hint{font-size:12.5px;color:var(--ink3);margin:-6px 0 12px}
+.core{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:10px;padding:20px 24px;text-align:center}
+.core .lb{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:700}
+.core p{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--navy);margin-top:8px;line-height:1.7}
+.lv{display:inline-block;font-size:10px;font-weight:700;padding:1px 7px;border-radius:99px;margin-left:6px;vertical-align:1px;font-family:var(--mono)}
+.lv-A{background:#E0ECF7;color:#1E3A5F}.lv-B{background:#E3F1EC;color:#0F6E56}.lv-C{background:#FBEFE3;color:#B4530A}.lv-D{background:#F3E9D3;color:#8a6d1f}
+.spd{display:flex;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--card);align-items:flex-start}
+.spd .sn{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:var(--orange);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:var(--serif)}
+.spd .st{font-size:13px;font-weight:700;color:var(--ink)}
+.spd .sd{font-size:12.5px;color:var(--ink2);margin-top:2px}
+.mapgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.mnode{border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:var(--card);cursor:pointer;transition:all .15s;font-size:12.5px}
+.mnode:hover{border-color:var(--gold);background:var(--gold-soft)}
+.mnode .mt{font-weight:700;color:var(--navy);font-family:var(--serif);font-size:13px}
+.mnode .ms{font-size:11.5px;color:var(--ink2);margin-top:2px}
+details.ch{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--card);overflow:hidden}
+details.ch summary{list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:10px}
+details.ch summary::-webkit-details-marker{display:none}
+details.ch[open]{border-color:var(--gold2)}
+.ch-no{width:28px;height:28px;border-radius:8px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;font-family:var(--serif);flex-shrink:0}
+.ch-title{font-family:var(--serif);font-size:13.5px;font-weight:700;color:var(--ink)}
+.ch-pos{font-size:10.5px;color:var(--ink3);display:block}
+.ch-arrow{margin-left:auto;color:var(--gold);transition:transform .2s}
+details.ch[open] .ch-arrow{transform:rotate(90deg)}
+.ch-body{padding:2px 16px 14px;border-top:1px solid var(--line)}
+.cell{margin-top:9px;padding-left:11px;border-left:2px solid var(--line);font-size:12.5px;color:#3a3e45}
+.cell .k{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;padding:1px 7px;border-radius:5px;margin-right:7px;vertical-align:1px}
+.k-judge{background:var(--gold-soft);color:var(--gold)}
+.k-logic{background:var(--navy-soft);color:var(--navy)}
+.k-ev{background:var(--teal-soft);color:var(--teal)}
+.txt b{color:var(--navy)}
+.loc{font-family:var(--mono);font-size:10.5px;color:var(--ink3)}
+.gene{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:8px}
+.gi{border:1px solid var(--line);border-radius:10px;padding:10px 13px;background:var(--paper)}
+.gi .gn{font-size:13px;font-weight:700;color:var(--navy)}
+.gi .gs{font-size:11.5px;color:var(--ink2);margin-top:2px}
+.gi .lv{float:right;margin-top:2px}
+details.fold{border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden;margin-bottom:8px}
+details.fold summary{list-style:none;cursor:pointer;padding:11px 15px;font-size:13px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
+details.fold summary::-webkit-details-marker{display:none}
+details.fold summary::before{content:"＋";color:var(--gold);font-weight:700}
+details.fold[open] summary::before{content:"－"}
+details.fold .fb{padding:2px 15px 13px 28px;font-size:12.5px;color:var(--ink2);border-top:1px dashed var(--line)}
+details.fold .fb b{color:var(--navy)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.two{grid-template-columns:1fr}}
+.pro{border:1px solid #CBDCA6;border-radius:10px;padding:14px 16px;background:var(--green-soft)}
+.pro h4{font-size:13px;color:var(--green);margin-bottom:6px}
+.con{border:1px solid #EDC9C9;border-radius:10px;padding:14px 16px;background:var(--red-soft)}
+.con h4{font-size:13px;color:var(--red);margin-bottom:6px}
+.pro li,.con li{font-size:12.5px;margin-left:16px;margin-bottom:4px;color:#3a3e45}
+.verdict{margin-top:10px;font-size:13px;background:var(--navy-soft);border-radius:8px;padding:10px 14px}
+.verdict b{color:var(--navy)}
+.quote{position:relative;background:var(--card);border:1px solid var(--line);border-left:none;border-radius:0 10px 10px 0;padding:10px 15px 10px 22px;margin-bottom:8px;font-family:var(--serif);font-size:14px;font-weight:600;color:#33383f}
+.quote::before{content:"";position:absolute;left:0;top:0;bottom:0;width:11px;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:2px 0 0 2px}
+.quote .loc{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink3);font-weight:400}
+ol.actions{list-style:none;counter-reset:a}
+ol.actions li{counter-increment:a;position:relative;padding:9px 13px 9px 46px;background:var(--paper);border:1px solid var(--line);border-radius:9px;margin-bottom:8px;font-size:13px}
+ol.actions li::before{content:counter(a);position:absolute;left:11px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:var(--serif)}
+ol.actions li .how{display:block;font-weight:700;color:var(--navy)}
+ol.actions li .eg{display:block;font-size:12px;color:var(--ink2);margin-top:2px}
+#backtop{position:fixed;right:20px;bottom:22px;width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;border:none;font-size:17px;cursor:pointer;box-shadow:0 4px 14px rgba(33,37,43,.15);opacity:0;pointer-events:none;transition:all .25s;z-index:80}
+#backtop.show{opacity:1;pointer-events:auto}
+footer{text-align:center;font-size:11.5px;color:var(--ink3);margin-top:16px;font-family:var(--serif)}
+</style>
+</head>
+<body>
+<div id="pbar"></div>
+<div class="top">
+  <div class="top-in">
+    <div class="brand"><span class="mk">薄</span>低风险创业 · 薄书</div>
+    <div class="tabs">
+      <button class="tab on" id="tb0" onclick="sw(0)">速读 15′</button>
+      <button class="tab" id="tb1" onclick="sw(1)">精读 1h</button>
+      <button class="tab" id="tb2" onclick="sw(2)">深度</button>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+
+  <section class="panel on" id="p0">
+    <div class="card">
+      <div class="core"><div class="lb">CORE THESIS · 一句话核心</div>
+      <p>创业不是高风险的事——风险来自认知不足。成功的企业家不是善于冒风险，而是善于控制风险；创业是一门可以刻意练习的专业手艺。</p></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">速</span>7 条速读精华<span class="lv lv-C" style="margin-left:auto">C</span></div>
+      <div class="hint">每条 1 分钟 · 要点 + 一句话解释 + 信心级别</div>
+      <div id="spd"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">图</span>全书模型地图<span class="lv lv-C" style="margin-left:auto">C</span></div>
+      <div class="hint">8 大模型是这本书的骨架 · 点击跳转精读屏对应卡片</div>
+      <div class="mapgrid" id="map"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p1">
+    <div class="card">
+      <div class="hint">8 大模型 · 每个含四要素（判断 / 论证逻辑 / 论据案例 / 信心级别）· 点击展开</div>
+      <div id="chs"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p2">
+    <div class="card">
+      <div class="h"><span class="no">基</span>七基因分析</div>
+      <div class="hint">基因判定：论证 + 经验 + 模型 主 → 提取策略 = 模型库</div>
+      <div class="gene" id="gene"></div>
+      <div class="hint">主基因深度提取（逻辑链 / 案例证据 / 方法步骤），弱基因不硬挖——所以本书薄书以「8 大模型」为骨架，而非按章平铺。</div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">信</span>信心分级说明</div>
+      <div class="hint">模式 B（书名联网检索）的诚信标注：无原书文本，所有要点为结构化提炼，出处精度到章节级</div>
+      <div id="conf"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">读</span>常见误读与作者盲点</div>
+      <div id="mis"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">评</span>批判性评论</div>
+      <div class="two">
+        <div class="pro"><h4>✓ 最值钱的地方</h4><ul id="pros"></ul></div>
+        <div class="con"><h4>✕ 必须打折扣的地方</h4><ul id="cons"></ul></div>
+      </div>
+      <div class="verdict" id="verdict"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">句</span>金句摘录（转述版 · 非逐字原文）</div>
+      <div id="quotes"></div>
+    </div>
+    <div class="card">
+      <div class="h"><span class="no">行</span>可执行清单 · 10 个创业动作</div>
+      <ol class="actions" id="acts"></ol>
+    </div>
+  </section>
+
+  <footer>薄书 · 三阅读模式 · 信心分级 A-D · 模式 B（书名联网检索 · 多源交叉核验）</footer>
+</div>
+<button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function sw(i){for(var j=0;j<3;j++){document.getElementById('p'+j).classList.toggle('on',j===i);document.getElementById('tb'+j).classList.toggle('on',j===i);}window.scrollTo({top:0});}
+var SPD=[["创业的风险不在创业本身","而在认知——对行业、用户、现金流的认知不足才是高风险的来源。","第一章 · C"],
+["控制风险，不是冒风险","成功企业家是风险控制者：先胜而后求战，把不确定性提前消化掉。","第一章 · C"],
+["优雅地解决一个社会问题","伟大公司都因解决了一个巨大矛盾而成就；问题大小决定市场大小。","第一章 · C"],
+["从抱怨里找创业机会","抱怨背后是未被满足的需求——越痛的抱怨越是好入口。","第二章 · C"],
+["没有秘密是最大的风险","秘密=别人学不会的护城河；验证它只看两个假设：价值假设（有人付钱）+ 增长假设（客户推荐）。","第三章 · C"],
+["设计反脆弱的商业结构","失败成本有限、收益上限无限（非对称交易），并始终保留选择权。","第四章 · C"],
+["指数增长靠零边际成本与杠杆","用幂次法则思考：把固定成本做重、把复制成本做零，撬动杠杆资源。","第八章 · C"]];
+(function(){document.getElementById('spd').innerHTML=SPD.map(function(s,i){return '<div class="spd"><span class="sn">'+(i+1)+'</span><div><div class="st">'+s[0]+'</div><div class="sd">'+s[1]+' <span class="lv lv-C">'+s[2]+'</span></div></div></div>';}).join('');})();
+var MAP=[["反认知模型","风险来自认知不足","ch0"],["好问题模型","抱怨→洞察→最痛点","ch1"],["秘密模型","六种秘密+双假设验证","ch2"],["反脆弱模型","非对称+杠铃+选择权","ch3"],["生物态团队","三行代码+群智涌现","ch4"],["凝聚力模型","安全感+二级反馈","ch5"],["MGM 客户模型","尖叫客户+一句话传播","ch6"],["指数增长引擎","零边际成本+杠杆","ch7"]];
+(function(){document.getElementById('map').innerHTML=MAP.map(function(m){return '<div class="mnode" onclick="sw(1)"><div class="mt">'+m[0]+'</div><div class="ms">'+m[1]+'</div></div>';}).join('');})();
+var CHS=[
+{n:"1",t:"反认知模型：创业不是高风险",p:"第一章 · 低风险创业的基本逻辑",cells:[["判断","创业不是高风险，风险来自认知不足；成功企业家善于控制风险而非冒风险——「先胜而后求战」。","第一章"],["论证逻辑","高风险高收益是误导性常识：一胜九败源于认知盲区。创业是一门专业手艺，掌握原则方法+刻意练习即可大幅降险；做企业最重要的是现金流而非资产。","第一章"],["论据","作者以「樊登读书」为样本：2013 创办，2019 注册用户超 1600 万、分会 3000 多家——知识付费+个人 IP 的低边际成本扩张。","第一章 · C"]]},
+{n:"2",t:"好问题模型：从抱怨出发",p:"第二章 · 创业从找到好问题开始",cells:[["判断","方向比奔跑重要——找到真问题是创业第一步；市场要足够大、存在变革空间、在客户最痛的点上突破。","第二章"],["论证逻辑","抱怨=未被满足的需求信号：深入洞察客户的生活与灵魂，忘掉创始人身份避免自嗨；区分真痛点（愿意付费）与假痛点（只是说说）。","第二章"],["论据","书中方法：从抱怨记录开始，找宏大变革目标，在客户最痛的点突破——「一见钟情」式产品来自解决真正的痛。","第二章 · C"]]},
+{n:"3",t:"秘密模型：抗风险的护城河",p:"第三章 · 秘密是最好的抗风险武器",cells:[["判断","问题定市场大小，秘密定风险大小；没有秘密是创业者最大的风险。真正的秘密不怕人知道——告诉你你也学不会。","第三章"],["论证逻辑","六种好秘密：资源 / 科技 / 运营能力 / 品牌口碑 / 价格 / 用户；用「十倍好」超越竞争；秘密是慢慢积累的过程。验证两假设：价值假设（拿去卖、收费）+ 增长假设（客户会不会推荐）。","第三章"],["论据","方法落地：先做 MVP 最小可行产品验证，再放大；融资须有度——钱不是越多越好（验证期小额融资，避免过早稀释）。","第三章 · C"]]},
+{n:"4",t:"反脆弱模型：从不确定中受益",p:"第四章 · 反脆弱的结构设计",cells:[["判断","世界不是线性的而是曲线的——把失败成本控制在最低限度，同时不断放大收益上限（非对称交易）。","第四章"],["论证逻辑","脆弱与反脆弱的区别在于有没有选择权：有选择余地=反脆弱，失去选择权=脆弱。配置「创业杠铃」（如孔子：世道好出仕、世道不好教书），警惕能力陷阱（只会做擅长的事）与资源陷阱（被既有资源绑架）。","第四章"],["论据","固定资产不产出任何收益；作者引塔勒布《反脆弱》《黑天鹅》：从随时可能发生的不确定性中受益。","第四章 · C"]]},
+{n:"5",t:"生物态团队：三行代码",p:"第五章 · 赋能生物态创业团队",cells:[["判断","打造团队要用生物态思维而非机械态——大量简单元素组合涌现的「群智涌现」才是复杂体系的正确管理方式。","第五章"],["论证逻辑","母系统的稳定来自子系统的不稳定：给团队三行初始代码——为社会做贡献 / 终身成长 / 持续尝试新事物，然后不断迭代；好人才是「长」出来的，守住底线允许犯错，建立与离职员工的联盟。","第五章"],["论据","机械态管理（自上而下严格控制）必然失败；书中主张多元化发展员工，让子系统拥有反脆弱能力。","第五章 · C"]]},
+{n:"6",t:"凝聚力模型：安全感+二级反馈",p:"第六章 · 有效沟通造就团队凝聚力",cells:[["判断","高效团队的关键要素是安全感——没有安全感的团队无法凝聚。","第六章"],["论证逻辑","生物态团队的四种管理形式 + 有效沟通工具落地：用二级反馈（表扬+说明具体原因）建立成员的自我责任，打造团队支柱。","第六章"],["论据","二级反馈与《可复制的领导力》一脉相承：对事不对人、说明原因，让成员知道「下次该怎么做」。","第六章 · C"]]},
+{n:"7",t:"MGM 客户模型：让客户带来客户",p:"第七章 · 最优客户发展方法",cells:[["判断","十万人说不错，不如一百人尖叫——深度满意的客户是增长引擎。","第七章"],["论证逻辑","MGM（Member Get Member）：让客户为你带来新客户，把传播点控制在一句话之内；用产品牵动大众情绪，让客户看在眼里、记在心里；用故事打败「知识的诅咒」（专家说不清自己知道的事）。","第七章"],["论据","传播五化：专业化（懂广告）/ 简单化（卖点一句话）/ 情绪化（牵动情绪）/ 可视化（看在眼里）/ 故事化（用故事讲清）。","第七章 · C"]]},
+{n:"8",t:"指数增长引擎：零边际成本",p:"第八章 · 打造指数级增长的引擎",cells:[["判断","学会用幂次法则思考——少数关键节点带来大部分增长，指数增长是设计出来的。","第八章"],["论证逻辑","三大底层理论（网络效应等）：让边际成本趋近于零的运营方法（内容/软件 vs 服务工时）；撬动杠杆资源（平台/渠道/资本）；找到指数型增长的关键节点，搭建跨部门增长小组。","第八章"],["论据","作者以樊登读书的会员+内容分发模式为样本：复制成本趋零 + 渠道杠杆 = 指数曲线。","第八章 · C"]]}
+];
+(function(){var h="";CHS.forEach(function(c,i){h+='<details class="ch"><summary><span class="ch-no">'+c.n+'</span><span><span class="ch-title">'+c.t+'</span><span class="ch-pos">'+c.p+'</span></span><span class="ch-arrow">›</span></summary><div class="ch-body">'+c.cells.map(function(x){return '<div class="cell"><span class="k k-'+x[0]+'">'+x[0]+'</span><span class="txt">'+x[1]+'</span> <span class="loc">['+x[2]+']</span></div>';}).join('')+'</div></details>';});document.getElementById('chs').innerHTML=h;})();
+document.addEventListener('toggle',function(e){if(e.target.classList&&e.target.classList.contains('ch')&&e.target.open){document.querySelectorAll('details.ch').forEach(function(d){if(d!==e.target)d.removeAttribute('open');});}},true);
+var GENE=[["论证","主","反直觉命题链贯穿全书"],["经验","主","作者创业经历+本土案例"],["模型","主","8 大方法模型为骨架"],["人物","中","樊登读书等创始故事"],["叙事","辅","案例为论据服务"],["美学","弱","无文采追求"],["历史数据","弱","少量行业数据"]];
+(function(){document.getElementById('gene').innerHTML=GENE.map(function(g){return '<div class="gi"><span class="lv lv-'+(g[1]==='主'?'C':g[1]==='中'?'D':'D')+'">'+g[1]+'</span><div class="gn">'+g[0]+'</div><div class="gs">'+g[2]+'</div></div>';}).join('');})();
+var CONF=[["A · 原文精读（锚点）","本书无此级——模式 B 无原书文本"],["B · 原文略读","无"],["C · 网络多源交叉核验","目录结构、章节主题（百科/书店/多份读书笔记一致）"],["D · 网络单源/流传版","金句与模型细节（读书笔记转述，非逐字原文）"]];
+(function(){document.getElementById('conf').innerHTML=CONF.map(function(c){return '<div class="cell"><span class="k k-judge">'+c[0].split('·')[0].trim()+'</span><span class="txt"><b>'+c[0].split('·').slice(1).join('·').trim()+'</b>：'+c[1]+'</span></div>';}).join('');})();
+var MIS=[["误读①「低风险=不冒险/小生意」","恰恰相反——低风险是控制风险的结构设计，不是逃避风险；作者鼓励「先胜而后求战」，该冒险的验证动作（MVP 收费测试）一个不少。"],["误读②「照着书做就能成功」","作者明说：我给的是修路的工程图和搭桥的砖石，路还是得你自己修——书是方法论不是成功保证书。"],["误读③「反脆弱=现金为王」","反脆弱的本质是结构不对称（损失有下限、收益无上限）+ 保留选择权，不是单纯攒钱。"],["盲点① 幸存者偏差","作者本人的成功（知识付费红利+个人 IP）高度依赖时代窗口，可复制性存疑；「低风险」结论有幸存者偏差风险。"],["盲点② 论证偏经验主义","「性格决定创业风险」「优雅地解决社会问题」等论断缺乏实证支撑，多为事后归因。"],["盲点③ 对竞争着墨不足","「十倍好」原则回避了多数赛道充分竞争的残酷现实；行业差异（技术型 vs 服务型创业）也未充分讨论。"]];
+(function(){document.getElementById('mis').innerHTML=MIS.map(function(m){return '<details class="fold"><summary>'+m[0]+'</summary><div class="fb">'+m[1]+'</div></details>';}).join('');})();
+var PROS=["反直觉框架清晰：把「高风险高收益」的常识翻过来，直指认知风险，帮创业者破除迷思。","可操作性强：问题→秘密→反脆弱→团队→增长，8 大模型层层递进，每步都有具体动作（双假设验证、三行代码、一句话传播）。","本土案例鲜活：樊登读书、微信等身边案例，比舶来创业书更有代入感。","常识纠偏价值高：「现金流>资产」「融资有度」「固定资产不产出收益」对新手创业者是救命提醒。"];
+var CONS=["幸存者偏差：作者的「低风险」成功路径（知识付费+个人IP）难以复制，可能误导读者低估真实创业难度。","论证偏经验主义：「性格决定风险」等断言无实证支撑，多为事后解释。","对竞争残酷性着墨不足：「十倍好」原则在充分竞争赛道里知易行难。","2019 年出版，数据与案例未覆盖其后市场环境变化（2026 新版序言补了 AI 时代视角，但正文未改）。"];
+(function(){document.getElementById('pros').innerHTML=PROS.map(function(p){return '<li>'+p+'</li>';}).join('');document.getElementById('cons').innerHTML=CONS.map(function(c){return '<li>'+c+'</li>';}).join('');})();
+document.getElementById('verdict').innerHTML='<b>一句话评价：</b>给「想创业又怕风险」的人一份可执行的风险控制手册——<b>当操作手册读，价值最高；当创业成功学读，会失望</b>。先读第 1、3、4 章建立认知框架，再按 8 大模型逐项对照自己的项目。';
+var QTS=[["创业不是高风险的事，风险来自认知不足。","第一章 · D"],["成功的企业家不是善于冒风险，而是善于控制风险。","第一章 · D"],["先胜而后求战。","第一章 · D"],["做企业最重要的是现金流，而不是资产。","第一章 · D"],["方向比奔跑重要，选择比努力重要。","第二章 · D"],["真正的秘密，从来不怕别人知道，因为即便你知道了，也学不会。","第三章 · D"],["这个世界不是线性的，而是曲线的。","第四章 · D"],["脆弱和反脆弱最大的区别，在于你有没有可选性。","第四章 · D"],["十万人说不错，不如一百人尖叫。","第七章 · D"]];
+(function(){document.getElementById('quotes').innerHTML=QTS.map(function(q){return '<div class="quote">'+q[0]+'<span class="loc">—— '+q[1]+'（转述版，非逐字原文）</span></div>';}).join('');})();
+var ACTS=[["记下身边人的抱怨","把一周内听到的 3 条真实抱怨写下来，找出背后未被满足的需求——抱怨是需求信号，不要忽略。","例：朋友抱怨「通勤地铁太挤」→ 通勤效率/折叠场景的产品机会。"],["验证痛点真伪","在客户最痛的点上做最小可行产品（MVP），拿去收费——愿意付费=真痛点。","例：先收 100 个订金再开发，而不是先开发再找客户。"],["检验你的秘密","问两问：价值假设成立吗（有人付钱）？增长假设成立吗（客户会推荐）？两个都不成立就别放大。","例：产品上线一个月，看复购率和转介绍占比。"],["设计反脆弱结构","固定成本最小化 + 收入弹性化 + 保留选择权——损失有下限、收益无上限。","例：先接单后生产、按需租用资源，别先租大办公室。"],["给团队写三行代码","只定底线：为社会做贡献 / 终身成长 / 持续尝试新事物——其余放开让团队长。","例：开会只对这三条，具体方案让员工自己提。"],["用二级反馈强化团队","表扬 + 说明具体原因（对事不对人），让成员知道「下次该怎么做」。","例：项目复盘时点名：你那个数据拆解做得准，因为它先验证了口径。"],["把传播点浓缩成一句话","测试：让一个陌生人复述你的产品卖点，他能说出一句，才算通过。","例：「三分钟讲清一本书」就比「AI 拆书工具」好传播。"],["找零边际成本环节","用幂次法则思考：哪部分复制成本趋零（内容/软件），哪部分是杠杆资源（平台/渠道）。","例：做课程（复制趋零）而不是只做咨询（按小时卖）。"],["融资有度","在需要验证的时刻融够验证的钱，不贪多、不过早稀释——钱不是越多越好。","例：验证期小额融资或自有资金，产品跑通后再考虑大额。"],["配置创业杠铃","主业稳定 + 副业冒险的组合，始终保留选择权。","例：上班的同时周末创业验证，跑通再辞职——孔子式：世道好出仕，世道不好教书。"]];
+(function(){document.getElementById('acts').innerHTML=ACTS.map(function(a){return '<li><span class="how">'+a[0]+'</span>'+a[1]+'<span class="eg">'+a[2]+'</span></li>';}).join('');})();
+window.addEventListener('scroll',function(){var h=document.documentElement,sc=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;document.getElementById('pbar').style.width=sc+'%';document.getElementById('backtop').classList.toggle('show',sc>12);});
+</script>
+</body>
+</html>
